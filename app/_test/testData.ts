@@ -1,4 +1,4 @@
-import { BaseData } from "../_interfaces/baseData";
+import { BaseData } from "../_interfaces/dto/response/baseData";
 
 // テスト拠点データ
 export const base: BaseData = {

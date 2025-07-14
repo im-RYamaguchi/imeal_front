@@ -1,7 +1,7 @@
 "use client"
 import { useBase } from "@/app/_context/baseContext";
 
-import Header from "../header"
+import Header from "../header";
 import Loading from "../loading";
 
 // メインレイアウト（拠点IDの取得状況による表示）

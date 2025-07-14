@@ -1,15 +1,15 @@
 'use client'
 
-import Button from "../../element/button";
-import LinkButton from "../../element/linkButton";
-import SelectButton from "../../element/selectButton";
+import ClickButton from "../../button/clickButton";
+import LinkButton from "../../button/linkButton";
+import SelectButton from "../../button/selectButton";
 
 import { PAGE_PATHS } from "@/app/_constants/pagePath";
 import { APP_NAME, HANDLE_NAME, PAGE_RAVELS, PAGE_TITLES } from "@/app/_constants/pageText";
 
 import styles from './Header.module.css';
 import { OptionData } from "@/app/_interfaces/OptionData";
-import { BaseData } from "@/app/_interfaces/baseData";
+import { BaseData } from "@/app/_interfaces/dto/response/baseData";
 import { useRouter } from "next/navigation";
 
 interface HeaderProps{
@@ -62,7 +62,7 @@ const Header = ({bases, base}: HeaderProps) => {
         <LinkButton href={PAGE_PATHS.LOGIN} text={PAGE_TITLES.LOGIN} />
 
         {/* ログアウト処理 */}
-        <Button text={HANDLE_NAME.LOGOUT} onClick={handleLogout}/>
+        <ClickButton text={HANDLE_NAME.LOGOUT} onClick={handleLogout}/>
 
         {/* サインアップページ遷移 */}
         <LinkButton href={PAGE_PATHS.SIGN_UP} text={PAGE_TITLES.SIGN_UP} />

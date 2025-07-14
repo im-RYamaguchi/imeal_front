@@ -4,7 +4,7 @@ import { bases as testBases } from "../_test/testData";
 import React, { createContext, useContext, useEffect, useState } from "react"
 import { useParams } from "next/navigation";
 
-import { BaseData } from "../_interfaces/baseData";
+import { BaseData } from "../_interfaces/dto/response/baseData";
 
 // コンテキストの型
 interface BaseContextType {

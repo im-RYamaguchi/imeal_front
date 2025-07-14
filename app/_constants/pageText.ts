@@ -11,7 +11,7 @@ export const PAGE_TITLES = {
   // グルメ・口コミ投稿ページ
   CREATE_SHOP_AND_REVIEW: 'グルメ・口コミ投稿ページ',
   // グルメ詳細ページ
-  SHOP_DETAIL: `グルメ詳細ページs`,
+  SHOP_DETAIL: `グルメ詳細ページ`,
   // グルメ編集ページ
   EDIT_SHOP: 'グルメ編集ページ',
   // 口コミ投稿ページ
@@ -26,14 +26,21 @@ export const PAGE_TITLES = {
   USER: 'ユーザーページ',
   // ユーザー編集ページ
   EDIT_USER: 'ユーザー編集ページ'
-};
+} as const;
 
 // ラベル名定数
 export const PAGE_RAVELS = {
-  BASE: {NAME: '拠点'}
-}
+  BASE: {NAME: '拠点'},
+  SIGN_UP_FORM: {
+    NAME: '名前',
+    EMAIL: 'メールアドレス',
+    PASSWORD: 'パスワード',
+    PASSWORD_CONFIRMATION: '確認用パスワード'
+  }
+} as const;
 
+// 処理名定数
 export const HANDLE_NAME = {
   LOGOUT: 'ログアウト',
   SUBMIT: '送信'
-}
+} as const;
