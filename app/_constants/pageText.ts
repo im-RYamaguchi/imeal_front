@@ -34,5 +34,6 @@ export const PAGE_RAVELS = {
 }
 
 export const HANDLE_NAME = {
-  LOGOUT: 'ログアウト'
+  LOGOUT: 'ログアウト',
+  SUBMIT: '送信'
 }
