@@ -1,6 +1,6 @@
 export const APP_NAME = 'IMeal';
 
-// ページパス定数
+// ページ名定数
 export const PAGE_TITLES = {
   // ホームページ
   HOME: 'ホームページ',
@@ -28,6 +28,11 @@ export const PAGE_TITLES = {
   EDIT_USER: 'ユーザー編集ページ'
 };
 
+// ラベル名定数
 export const PAGE_RAVELS = {
-  BASE: '拠点'
+  BASE: {NAME: '拠点'}
+}
+
+export const HANDLE_NAME = {
+  LOGOUT: 'ログアウト'
 }
