@@ -1,1 +1,11 @@
 /* フォームに対応するCSS */
+.form{
+  background-color: burlywood;
+  width: 50vw;
+}
+
+.field{
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}

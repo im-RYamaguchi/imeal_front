@@ -5,7 +5,7 @@ import LinkButton from "../../button/linkButton";
 import SelectButton from "../../button/selectButton";
 
 import { PAGE_PATHS } from "@/app/_constants/pagePath";
-import { APP_NAME, HANDLE_NAME, PAGE_RAVELS, PAGE_TITLES } from "@/app/_constants/pageText";
+import { APP_NAME, HANDLE_NAME, PAGE_LABELS, PAGE_TITLES } from "@/app/_constants/pageText";
 
 import styles from './Header.module.css';
 import { OptionData } from "@/app/_interfaces/OptionData";
@@ -46,7 +46,7 @@ const Header = ({bases, base}: HeaderProps) => {
 
         {/* 拠点選択 */}
         <div>
-          <span>{PAGE_RAVELS.BASE.NAME}：</span>
+          <span>{PAGE_LABELS.BASE.NAME}：</span>
           <SelectButton options={options} initialValue={String(base.id)} onChange={handleChangeBase}/>
         </div>
       </div>

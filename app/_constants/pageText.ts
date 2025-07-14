@@ -29,7 +29,7 @@ export const PAGE_TITLES = {
 } as const;
 
 // ラベル名定数
-export const PAGE_RAVELS = {
+export const PAGE_LABELS = {
   BASE: {NAME: '拠点'},
   SIGN_UP_FORM: {
     NAME: '名前',

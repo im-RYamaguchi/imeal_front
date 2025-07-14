@@ -2,6 +2,8 @@ import { FieldError, FieldValues, Path, RegisterOptions, UseFormRegister } from 
 
 import ErrorMessage from "../error/errorMessage";
 
+import styles from "./Form.module.css";
+
 interface InputFieldProps<TFormData extends FieldValues>{
   label: string;
   name: Path<TFormData>
@@ -15,7 +17,7 @@ interface InputFieldProps<TFormData extends FieldValues>{
 // inputタイプのフィールド
 const InputField = <TFormData extends FieldValues>({label, name, type, placeholder, register, validationRules, error}: InputFieldProps<TFormData>) => {
   return(
-    <div >
+    <div className={styles.field}>
       <label htmlFor={name}>{label}</label>
       {error?.message && <ErrorMessage errorMessage={error.message} />}
       <input type={type} id={name} placeholder={placeholder}
