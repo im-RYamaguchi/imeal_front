@@ -9,7 +9,7 @@ import { APP_NAME, HANDLE_NAME, PAGE_LABELS, PAGE_TITLES } from "@/app/_constant
 
 import styles from './Header.module.css';
 import { OptionData } from "@/app/_interfaces/OptionData";
-import { BaseData } from "@/app/_interfaces/dto/response/baseData";
+import { BaseData } from "@/app/_interfaces/dto/response/BaseData";
 import { useRouter } from "next/navigation";
 
 interface HeaderProps{

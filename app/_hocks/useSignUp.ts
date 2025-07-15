@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { FormInputData } from "../_interfaces/FormInputData";
 import { PAGE_LABELS } from "../_constants/pageText";
 import { BLANK_MESSAGE, EMAIL_MAX_LENGTH, EMAIL_PATTERN, MAX_LENGTH_MESSAGE, MIN_LENGTH_MESSAGE, NAME_MAX_LENGTH, PASSWORD_CONFIRMATION_MESSAGE, PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH, PATTERN_MESSAGE } from "../_constants/validation";
 import { useRouter } from "next/navigation";
 import { PAGE_PATHS } from "../_constants/pagePath";
 import { useBase } from "../_context/baseContext";
+import { extractErrorMessages } from "../_utils/errorHandler";
+import { createUser } from "../_utils/api/users";
 
 // 入力する要素
 const inputs: FormInputData<SignUpFormData>[] = [
@@ -84,7 +86,6 @@ const inputs: FormInputData<SignUpFormData>[] = [
   }
 ];
 
-
 export const useSignUp = () => {
   // フォームオブジェクト
   const {register, handleSubmit, formState: {errors}, watch} = useForm<SignUpFormData>();
@@ -96,10 +97,17 @@ export const useSignUp = () => {
   const [serverErrorMessages, setServerErrorMessages] = useState<string[]>([]); 
   
   // サインアップ処理
-  const handleSignUp = (signUpForm: SignUpFormData) => {
+  const handleSignUp = async (signUpForm: SignUpFormData) => {
     console.log('サインアップ処理');
-    router.push(PAGE_PATHS.TOP(base.id));
-
+    try{
+      // APIリクエスト
+      const user = createUser(signUpForm);
+      // トップページ遷移
+      router.push(PAGE_PATHS.TOP(base.id));
+    }catch(error){
+      // エラーメッセージセット
+      setServerErrorMessages(extractErrorMessages(error));
+    }
   }
 
   return{register, handleSubmit, handleSignUp, serverErrorMessages, errors, inputs};
