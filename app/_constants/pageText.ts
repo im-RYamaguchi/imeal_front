@@ -48,3 +48,6 @@ export const HANDLE_NAME = {
   LOGOUT: 'ログアウト',
   SUBMIT: '送信'
 } as const;
+
+// 取得失敗定数
+export const GETTING_ERROR = (key: string) => `${key}が取得できませんでした`;
