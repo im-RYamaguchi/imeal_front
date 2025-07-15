@@ -1,12 +1,7 @@
-import axios from "axios";
-import { BASE_URL, USERS_URL } from "./apiUrl";
+import { USERS_URL } from "./apiUrl";
 import { UserData } from "@/app/_interfaces/dto/response/UserData";
-
-// API定義
-const api = axios.create({
-  baseURL: BASE_URL,
-  withCredentials: true
-});
+import { SignUpFormData } from "@/app/_interfaces/dto/request/SignUpFormData";
+import { api } from "./api";
 
 // ユーザー作成APIリクエスト
 export const createUser = async (signUpForm: SignUpFormData): Promise<UserData> => {

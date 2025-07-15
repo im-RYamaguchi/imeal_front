@@ -1,0 +1,4 @@
+/* エラーに対応するCSS */
+.errorMessage{
+  color: red;
+}

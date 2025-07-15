@@ -7,9 +7,8 @@ import { useRouter } from "next/navigation";
 import { PAGE_PATHS } from "../_constants/pagePath";
 import { useBase } from "../_context/baseContext";
 import { extractErrorMessages } from "../_utils/errorHandler";
-import { createUser } from "../_utils/api/users";
-import { SignUpFormData } from "../_interfaces/dto/request/SignUpFormData";
 import { LoginFormData } from "../_interfaces/dto/request/LoginFormData";
+import { login } from "../_utils/api/auths";
 
 // 入力する要素
 const inputs: FormInputData<LoginFormData>[] = [
@@ -61,12 +60,12 @@ export const useLogin = () => {
   // サーバー側のエラーメッセージ
   const [serverErrorMessages, setServerErrorMessages] = useState<string[]>([]); 
   
-  // サインアップ処理
+  // ログイン処理
   const handleLogin = async (loginForm: LoginFormData) => {
     console.log('ログイン処理');
     try{
       // // APIリクエスト
-      const user = createUser(loginForm);
+      const user = login(loginForm);
       // トップページ遷移
       router.push(PAGE_PATHS.TOP(base.id));
     }catch(error){

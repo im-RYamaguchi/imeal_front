@@ -1,10 +1,12 @@
+import styles from "../Error.module.css"
+
 interface ErrorMessageProps{
   errorMessage: string;
 }
 
 const ErrorMessage = ({errorMessage}: ErrorMessageProps) => {
   return(
-    <li>{errorMessage}</li>
+    <li className={styles.errorMessage}>{errorMessage}</li>
   );
 };
 
