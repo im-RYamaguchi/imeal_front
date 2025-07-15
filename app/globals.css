@@ -5,6 +5,12 @@ body {
   background-color: bisque;
 }
 
+/* リンクのアンダーバー削除 */
 a{
   text-decoration: none;
+}
+
+/* リストの点削除 */
+li{
+  list-style: none;
 }

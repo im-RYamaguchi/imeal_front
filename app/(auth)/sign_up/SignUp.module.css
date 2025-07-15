@@ -1,1 +1,6 @@
 /* サインアップページに適応するCSS */
+.signUp{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
