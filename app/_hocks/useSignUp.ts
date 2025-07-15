@@ -5,10 +5,10 @@ import { PAGE_LABELS } from "../_constants/pageText";
 import { BLANK_MESSAGE, EMAIL_MAX_LENGTH, EMAIL_PATTERN, MAX_LENGTH_MESSAGE, MIN_LENGTH_MESSAGE, NAME_MAX_LENGTH, PASSWORD_CONFIRMATION_MESSAGE, PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH, PATTERN_MESSAGE } from "../_constants/validation";
 import { useRouter } from "next/navigation";
 import { PAGE_PATHS } from "../_constants/pagePath";
-import { useBase } from "../_context/baseContext";
 import { extractErrorMessages } from "../_utils/errorHandler";
 import { createUser } from "../_utils/api/users";
 import { SignUpFormData } from "../_interfaces/dto/request/SignUpFormData";
+import { BaseData } from "../_interfaces/dto/response/BaseData";
 
 // 入力する要素
 const inputs: FormInputData<SignUpFormData>[] = [
@@ -87,13 +87,15 @@ const inputs: FormInputData<SignUpFormData>[] = [
   }
 ];
 
-export const useSignUp = () => {
+interface useSignUpParams{
+  base: BaseData;
+}
+
+export const useSignUp = ({base}: useSignUpParams) => {
   // フォームオブジェクト
   const {register, handleSubmit, formState: {errors}} = useForm<SignUpFormData>();
   // ルーターオブジェクト
   const router = useRouter();
-  // 拠点コンテキスト
-  const {base} = useBase();
   // サーバー側のエラーメッセージ
   const [serverErrorMessages, setServerErrorMessages] = useState<string[]>([]); 
   
