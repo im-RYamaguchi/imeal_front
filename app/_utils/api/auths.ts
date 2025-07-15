@@ -15,3 +15,10 @@ export const login = async (loginForm: LoginFormData): Promise<UserData> => {
 };
 
 // ログアウトAPIリクエスト
+export const logout = async (): Promise<void> => {
+  try{
+    await api.post<UserData>(AUTH_URL.LOGOUT);
+  }catch(error){
+    throw error;
+  }
+};

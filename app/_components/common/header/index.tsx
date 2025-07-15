@@ -11,6 +11,9 @@ import styles from './Header.module.css';
 import { OptionData } from "@/app/_interfaces/OptionData";
 import { BaseData } from "@/app/_interfaces/dto/response/BaseData";
 import { useRouter } from "next/navigation";
+import { logout } from "@/app/_utils/api/auths";
+import { extractErrorMessages } from "@/app/_utils/errorHandler";
+import { useHeader } from "@/app/_hocks/useHeader";
 
 interface HeaderProps{
   bases: BaseData[];
@@ -19,24 +22,8 @@ interface HeaderProps{
 
 // ヘッダー
 const Header = ({bases, base}: HeaderProps) => {
-  // オプション取得
-  const options: OptionData[] = bases.map(base => ({value: String(base.id), text: base.name}));
-  // ルーターオブジェクト
-  const router = useRouter();
-
-  // 拠点変更処理
-  const handleChangeBase = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    // 選択された拠点ID取得
-    const baseId = Number(event.currentTarget.value);
-    // トップページ遷移
-    router.push(PAGE_PATHS.TOP(baseId));
-  }
-
-  // ログアウト処理
-  const handleLogout = () => {
-    console.log(HANDLE_NAME.LOGOUT);
-
-  }
+  // ヘッダーコンテキスト
+  const {options, handleChangeBase, handleLogout} = useHeader({bases});
 
   return(
     <header className={styles.header}>

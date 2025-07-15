@@ -14,3 +14,9 @@ export const USERS_URL = {
   // 作成
   CREATE: '/users'
 } as const;
+
+// 拠点
+export const BASES_URL = {
+  // 取得
+  GET: '/bases'
+}
