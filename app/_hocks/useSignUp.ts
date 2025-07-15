@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { FormInputData } from "../_interfaces/FormInputData";
 import { PAGE_LABELS } from "../_constants/pageText";
 import { BLANK_MESSAGE, EMAIL_MAX_LENGTH, EMAIL_PATTERN, MAX_LENGTH_MESSAGE, MIN_LENGTH_MESSAGE, NAME_MAX_LENGTH, PASSWORD_CONFIRMATION_MESSAGE, PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH, PATTERN_MESSAGE } from "../_constants/validation";
@@ -8,6 +8,7 @@ import { PAGE_PATHS } from "../_constants/pagePath";
 import { useBase } from "../_context/baseContext";
 import { extractErrorMessages } from "../_utils/errorHandler";
 import { createUser } from "../_utils/api/users";
+import { SignUpFormData } from "../_interfaces/dto/request/SignUpFormData";
 
 // 入力する要素
 const inputs: FormInputData<SignUpFormData>[] = [
@@ -88,7 +89,7 @@ const inputs: FormInputData<SignUpFormData>[] = [
 
 export const useSignUp = () => {
   // フォームオブジェクト
-  const {register, handleSubmit, formState: {errors}, watch} = useForm<SignUpFormData>();
+  const {register, handleSubmit, formState: {errors}} = useForm<SignUpFormData>();
   // ルーターオブジェクト
   const router = useRouter();
   // 拠点コンテキスト

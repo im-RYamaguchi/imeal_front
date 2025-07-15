@@ -1,0 +1,6 @@
+/* ログインページに適応するCSS */
+.login{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
