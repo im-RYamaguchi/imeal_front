@@ -1,5 +1,5 @@
 // サインアップフォーム型
-interface SignUpFormData{
+export interface SignUpFormData{
   // 名前
   name: string;
   // メールアドレス

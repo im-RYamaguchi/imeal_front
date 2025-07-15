@@ -36,6 +36,10 @@ export const PAGE_LABELS = {
     EMAIL: 'メールアドレス',
     PASSWORD: 'パスワード',
     PASSWORD_CONFIRMATION: '確認用パスワード'
+  },
+  LOGIN_FORM: {
+    EMAIL: 'メールアドレス',
+    PASSWORD: 'パスワード',
   }
 } as const;
 
