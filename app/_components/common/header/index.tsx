@@ -11,6 +11,8 @@ import styles from './Header.module.css';
 import { OptionData } from "@/app/_interfaces/OptionData";
 import { BaseData } from "@/app/_interfaces/dto/response/BaseData";
 import { useRouter } from "next/navigation";
+import { logout } from "@/app/_utils/api/auths";
+import { extractErrorMessages } from "@/app/_utils/errorHandler";
 
 interface HeaderProps{
   bases: BaseData[];
@@ -33,10 +35,15 @@ const Header = ({bases, base}: HeaderProps) => {
   }
 
   // ログアウト処理
-  const handleLogout = () => {
+  const handleLogout =　async () => {
     console.log(HANDLE_NAME.LOGOUT);
-
-  }
+    try{
+      // ログアウトAPIリクエスト
+      logout();
+    }catch(error){
+      console.error(extractErrorMessages(error));
+    }
+  };
 
   return(
     <header className={styles.header}>
