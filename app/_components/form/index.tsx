@@ -1,9 +1,9 @@
-import { FieldValues, UseFormHandleSubmit, UseFormRegister } from "react-hook-form";
+import { FieldError, FieldErrors, FieldValues, UseFormHandleSubmit, UseFormRegister } from "react-hook-form";
 
 import InputField from "./InputField";
 import SubmitButton from "./SubmitButton";
 import ErrorMessageList from "../error/errorMessageList";
-import { FormInputData } from "@/app/_interfaces/FormInput";
+import { FormInputData } from "@/app/_interfaces/FormInputData";
 
 import styles from "./Form.module.css";
 
@@ -15,21 +15,21 @@ interface FormProps<TFormData extends FieldValues>{
   // useForm
   handleSubmit:  UseFormHandleSubmit<TFormData, TFormData>
   register: UseFormRegister<TFormData>;
+  errors?: FieldErrors<TFormData>;
   // インプット要素
   inputs: FormInputData<TFormData>[];
 }
 
-
 // フォーム
-const Form = <TFormData extends FieldValues>({serverErrorMessages, onSubmit, handleSubmit, register, inputs}: FormProps<TFormData>) => {
-  
+const Form = <TFormData extends FieldValues>({serverErrorMessages, onSubmit, handleSubmit, register, errors  = {} as FieldErrors<TFormData>, inputs}: FormProps<TFormData>) => {
+  console.log(errors);
   return(
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       {serverErrorMessages.length > 0 && <ErrorMessageList errorMessages={serverErrorMessages} />}
 
       {inputs.map((input, index) => (
         <InputField key={`${index}_${input.name}`}
-          error={input.error}
+          error={errors[input.name] as FieldError | undefined}
           label={input.labelText}
           name={input.name}
           type={input.type}
