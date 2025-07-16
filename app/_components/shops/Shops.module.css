@@ -1,0 +1,17 @@
+/* 飲食店に対応するCSS */
+
+.shops{
+  display: flex;
+}
+
+.shop{
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem;
+  padding: 1rem;
+  background-color: burlywood;
+}
+
+.name{
+  font-size: 2rem;
+}

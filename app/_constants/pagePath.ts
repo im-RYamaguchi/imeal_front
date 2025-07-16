@@ -9,7 +9,7 @@ export const PAGE_PATHS = {
   // グルメ・口コミ投稿ページ
   CREATE_SHOP_AND_REVIEW: (baseId: number) => `/bases/${baseId}/shops/create`,
   // グルメ詳細ページ
-  SHOP_DETAIL: (baseId: number) => `/bases/${baseId}/shops`,
+  SHOP_DETAIL: (baseId: number, shopId: number) => `/bases/${baseId}/shops/${shopId}`,
   // グルメ編集ページ
   EDIT_SHOP: (baseId: number, shopId: number) => `/bases/${baseId}/shops/${shopId}/edit`,
   // 口コミ投稿ページ

@@ -29,7 +29,7 @@ export const mockBases: BaseData[] = [
 // テストショップデータ
 export const mockShop: ShopData = {
   id: 1,
-  url: 'https://www.google.co.jp/maps/place/%E9%A6%99%E4%B9%83/@35.6431202,139.6623343,20.82z/data=!4m9!1m2!2m1!1z5LiJ6LuS6Iy25bGL5b2x5pyo!3m5!1s0x6018f49d734f8641:0x4ea1ff6b5e9f7fc4!8m2!3d35.6432763!4d139.6626704!16s%2Fg%2F11b7hfr401?hl=ja&entry=ttu&g_ep=EgoyMDI1MDcxMy4wIKXMDSoASAFQAw%3D%3D',
+  url: 'https://www.google.co.jp/maps/place/%E9%A6%99%E4%B9%83/@35.6432774,139.6620267,19z/data=!3m1!4b1!4m6!3m5!1s0x6018f49d734f8641:0x4ea1ff6b5e9f7fc4!8m2!3d35.6432763!4d139.6626704!16s%2Fg%2F11b7hfr401?hl=ja&entry=ttu&g_ep=EgoyMDI1MDcxMy4wIKXMDSoASAFQAw%3D%3D',
   name: '香乃',
   address: '〒154-0023 東京都世田谷区若林１丁目１６−１',
   distance: 230,
