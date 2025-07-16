@@ -22,7 +22,6 @@ interface FormProps<TFormData extends FieldValues>{
 
 // フォーム
 const Form = <TFormData extends FieldValues>({serverErrorMessages, onSubmit, handleSubmit, register, errors  = {} as FieldErrors<TFormData>, inputs}: FormProps<TFormData>) => {
-  console.log(errors);
   return(
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       {serverErrorMessages.length > 0 && <ErrorMessageList errorMessages={serverErrorMessages} />}

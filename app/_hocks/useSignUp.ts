@@ -104,7 +104,7 @@ export const useSignUp = ({base}: useSignUpParams) => {
     console.log('サインアップ処理');
     try{
       // APIリクエスト
-      const user = createUser(signUpForm);
+      const user = await createUser(signUpForm);
       // トップページ遷移
       router.push(PAGE_PATHS.TOP(base.id));
     }catch(error){

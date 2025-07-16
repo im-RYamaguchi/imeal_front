@@ -1,11 +1,10 @@
 "use client"
-import { bases as testBases } from "../_test/testData";
-
 import React, { createContext, useContext, useEffect, useState } from "react"
 import { useParams } from "next/navigation";
 
 import { BaseData } from "../_interfaces/dto/response/BaseData";
 import { extractErrorMessages } from "../_utils/errorHandler";
+import { getBases } from "../_utils/api/bases";
 
 // コンテキストの型
 interface BaseContextType {
@@ -36,8 +35,7 @@ const BaseProvider = ({children}: {children: React.ReactNode}) => {
         // ローディング中
         setIsBaseLoading(true);
         // APIリクエスト
-        // const bases = await getBases();
-        const bases = testBases;
+        const bases = await getBases();
         // 拠点セット
         setBases(bases);
         // 拠点が空でない場合、拠点初期値セット
@@ -71,6 +69,7 @@ const BaseProvider = ({children}: {children: React.ReactNode}) => {
       setIsBaseLoading(false);
       return;
     }
+    console.log(bases);
     // IDが一致するベース取得
     const base = bases.find(base => base.id === baseId);
     //拠点セット（見つからなかった場合はnull）

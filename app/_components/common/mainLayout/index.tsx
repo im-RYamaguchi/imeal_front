@@ -22,7 +22,7 @@ const MainLayout = ({children}: {children: React.ReactNode}) => {
   }
   return(
     <>
-    <Header bases={bases} base={base}/>
+    <Header bases={bases} base={base} />
     <main>
       {children}
     </main>

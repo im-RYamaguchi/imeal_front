@@ -2,8 +2,8 @@ import { PAGE_PATHS } from "@/app/_constants/pagePath";
 import { OptionData } from "@/app/_interfaces/OptionData";
 import { BaseData } from "@/app/_interfaces/dto/response/BaseData";
 import { useRouter } from "next/navigation";
-import { logout } from "@/app/_utils/api/auths";
 import { extractErrorMessages } from "@/app/_utils/errorHandler";
+import { useUser } from "../_context/userContext";
 
 interface useHeaderParams{
   bases: BaseData[];
@@ -11,6 +11,8 @@ interface useHeaderParams{
 
 // ヘッダーフック
 export const useHeader = ({bases}: useHeaderParams) => {
+    // ログアウト処理取得
+  const {logout} = useUser();
   // オプション取得
   const options: OptionData[] = bases.map(base => ({value: String(base.id), text: base.name}));
   // ルーターオブジェクト
