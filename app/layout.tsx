@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-
 import MainLayout from "./_components/common/mainLayout";
-
 import BaseProvider from "./_context/baseContext";
-
+import UserProvider from "./_context/userContext";
 import { APP_NAME } from "./_constants/pageText";
 
 import "./reset.css"
@@ -18,11 +16,13 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
   return (
     <html lang="ja">
       <body>
-        <BaseProvider>
-          <MainLayout>
-            {children}
-          </MainLayout>
-        </BaseProvider>
+        <UserProvider>
+          <BaseProvider>
+            <MainLayout>
+              {children}
+            </MainLayout>
+          </BaseProvider>
+        </UserProvider>
       </body>
     </html>
   );

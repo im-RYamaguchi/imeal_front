@@ -64,7 +64,6 @@ export const useLogin = ({base}: useLoginParams) => {
   
   // ログイン処理
   const handleLogin = async (loginForm: LoginFormData) => {
-    console.log('ログイン処理');
     try{
       // // APIリクエスト
       const user = login(loginForm);
