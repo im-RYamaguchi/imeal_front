@@ -10,7 +10,7 @@ interface ButtonProps{
 // ボタン
 const Button = ({text, onClick, styleType}: ButtonProps) => {
   return(
-    <button className="" onClick={onClick}>{text}</button>
+    <button className={styles.button} onClick={onClick}>{text}</button>
   );
 };
 

@@ -30,7 +30,18 @@ export const PAGE_TITLES = {
 
 // ラベル名定数
 export const PAGE_LABELS = {
-  BASE: {NAME: '拠点'},
+  BASE: {
+    VARIABLE_NAME: '拠点',
+    NAME: '拠点名'
+  },
+  SHOP: {
+    VARIABLE_NAME: '飲食店',
+    NAME: '飲食店名',
+    URL: 'GoogleMapのURL',
+    ADDRESS: '住所',
+    DISTANCE: (key: number) => `距離${key}m`,
+    MINUTES: (key: number) => `徒歩${key}分`
+  },
   SIGN_UP_FORM: {
     NAME: '名前',
     EMAIL: 'メールアドレス',
