@@ -1,3 +1,4 @@
+// アプリ名
 export const APP_NAME = 'IMeal';
 
 // ページ名定数
@@ -27,6 +28,18 @@ export const PAGE_TITLES = {
   // ユーザー編集ページ
   EDIT_USER: 'ユーザー編集ページ'
 } as const;
+
+// ページサブタイトル
+export const PAGE_SUB_TITLES = {
+  TOP: {
+    SHOPS_MAP: 'グルメマップ',
+    RECENT_REVIEWS: '最近の口コミ'
+  },
+  SHOP_DETAIL: {
+    SHOP_INFO: 'グルメ情報',
+    REVIEWS: '口コミ一覧'
+  }
+}
 
 // ラベル名定数
 export const PAGE_LABELS = {
