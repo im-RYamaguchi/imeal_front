@@ -8,6 +8,7 @@ import { PAGE_PATHS } from "../_constants/pagePath";
 import { extractErrorMessages } from "../_utils/errorHandler";
 import { LoginFormData } from "../_interfaces/dto/request/LoginFormData";
 import { BaseData } from "../_interfaces/dto/response/BaseData";
+import { useUser } from "../_context/userContext";
 
 // 入力する要素
 const inputs: FormInputData<LoginFormData>[] = [
@@ -51,10 +52,11 @@ const inputs: FormInputData<LoginFormData>[] = [
 
 interface useLoginParams{
   base: BaseData;
-  login: (loginForm: LoginFormData) => void;
 }
 
-export const useLogin = ({base, login}: useLoginParams) => {
+export const useLogin = ({base}: useLoginParams) => {
+  // ログイン処理取得
+  const {login} = useUser();
   // フォームオブジェクト
   const {register, handleSubmit, formState: {errors}} = useForm<LoginFormData>();
   // ルーターオブジェクト
@@ -66,7 +68,7 @@ export const useLogin = ({base, login}: useLoginParams) => {
   const handleLogin = async (loginForm: LoginFormData) => {
     try{
       // // APIリクエスト
-      const user = login(loginForm);
+      login(loginForm);
       // トップページ遷移
       router.push(PAGE_PATHS.TOP(base.id));
     }catch(error){

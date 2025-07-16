@@ -11,12 +11,10 @@ import { useUser } from "@/app/_context/userContext";
 const LoginPage = () => {
   // 拠点取得
   const {base} = useBase();
-  // ログイン処理取得
-  const {login} = useUser();
   // 万が一拠点がnullだった場合
   if(base === null) return;
   // ログインフック
-  const {register, handleSubmit, handleLogin, serverErrorMessages, errors, inputs} = useLogin({base: base, login: login});
+  const {register, handleSubmit, handleLogin, serverErrorMessages, errors, inputs} = useLogin({base});
 
   return(
     <div className={styles.login}>
