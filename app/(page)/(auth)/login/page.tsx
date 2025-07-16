@@ -5,15 +5,18 @@ import { useLogin } from "@/app/_hocks/useLogin";
 
 import styles from "./LoginPage.module.css";
 import { useBase } from "@/app/_context/baseContext";
+import { useUser } from "@/app/_context/userContext";
 
 // ログインページ
 const LoginPage = () => {
   // 拠点取得
   const {base} = useBase();
+  // ログイン処理取得
+  const {login} = useUser();
   // 万が一拠点がnullだった場合
   if(base === null) return;
   // ログインフック
-  const {register, handleSubmit, handleLogin, serverErrorMessages, errors, inputs} = useLogin({base: base});
+  const {register, handleSubmit, handleLogin, serverErrorMessages, errors, inputs} = useLogin({base: base, login: login});
 
   return(
     <div className={styles.login}>

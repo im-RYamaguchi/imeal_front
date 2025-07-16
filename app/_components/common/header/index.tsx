@@ -18,12 +18,13 @@ import { useHeader } from "@/app/_hocks/useHeader";
 interface HeaderProps{
   bases: BaseData[];
   base: BaseData;
+  logout: () => void;
 }
 
 // ヘッダー
-const Header = ({bases, base}: HeaderProps) => {
+const Header = ({bases, base, logout}: HeaderProps) => {
   // ヘッダーコンテキスト
-  const {options, handleChangeBase, handleLogout} = useHeader({bases});
+  const {options, handleChangeBase, handleLogout} = useHeader({bases, logout});
 
   return(
     <header className={styles.header}>

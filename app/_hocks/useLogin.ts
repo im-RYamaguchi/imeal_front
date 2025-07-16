@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import { PAGE_PATHS } from "../_constants/pagePath";
 import { extractErrorMessages } from "../_utils/errorHandler";
 import { LoginFormData } from "../_interfaces/dto/request/LoginFormData";
-import { login } from "../_utils/api/auths";
 import { BaseData } from "../_interfaces/dto/response/BaseData";
 
 // 入力する要素
@@ -52,9 +51,10 @@ const inputs: FormInputData<LoginFormData>[] = [
 
 interface useLoginParams{
   base: BaseData;
+  login: (loginForm: LoginFormData) => void;
 }
 
-export const useLogin = ({base}: useLoginParams) => {
+export const useLogin = ({base, login}: useLoginParams) => {
   // フォームオブジェクト
   const {register, handleSubmit, formState: {errors}} = useForm<LoginFormData>();
   // ルーターオブジェクト

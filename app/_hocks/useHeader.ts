@@ -2,15 +2,15 @@ import { PAGE_PATHS } from "@/app/_constants/pagePath";
 import { OptionData } from "@/app/_interfaces/OptionData";
 import { BaseData } from "@/app/_interfaces/dto/response/BaseData";
 import { useRouter } from "next/navigation";
-import { logout } from "@/app/_utils/api/auths";
 import { extractErrorMessages } from "@/app/_utils/errorHandler";
 
 interface useHeaderParams{
   bases: BaseData[];
+  logout: () => void;
 }
 
 // ヘッダーフック
-export const useHeader = ({bases}: useHeaderParams) => {
+export const useHeader = ({bases, logout}: useHeaderParams) => {
   // オプション取得
   const options: OptionData[] = bases.map(base => ({value: String(base.id), text: base.name}));
   // ルーターオブジェクト
