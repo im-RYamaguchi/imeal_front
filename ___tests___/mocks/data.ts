@@ -1,6 +1,5 @@
 import { BaseData } from "@/app/_interfaces/dto/response/BaseData";
 import { ShopData } from "@/app/_interfaces/dto/response/ShopData";
-import { url } from "inspector";
 
 // テスト拠点データ
 export const mockBase: BaseData = {
@@ -55,7 +54,27 @@ export const mockShop2: ShopData = {
   }
 };
 
+export const mockShop3: ShopData = {
+  id: 3,
+  url: 'https://www.google.co.jp/maps/place/%E5%90%89%E9%87%8E%E5%AE%B6+%E4%B8%89%E8%BB%92%E8%8C%B6%E5%B1%8B%E5%BA%97/@35.6445307,139.6683004,17z/data=!3m1!4b1!4m6!3m5!1s0x6018f4a1dee09a81:0xc4921b8f83904066!8m2!3d35.6445264!4d139.6708753!16s%2Fg%2F1td1k0rm?hl=ja&entry=ttu&g_ep=EgoyMDI1MDcxMy4wIKXMDSoASAFQAw%3D%3D',
+  name: '丸亀製麺ハマサイト',
+  address: '〒105-0022 東京都港区海岸１丁目２−２０ 汐留ビルディング 1F',
+  distance: 210,
+  minutes: 3,
+  base: mockBase2,
+  location: {
+    lat: 35.6566608,
+    lon: 139.756288
+  }
+};
+
+
+
 // テストショップリストデータ
 export const mockShops: ShopData[] = [
   mockShop, mockShop2
 ]
+export const mockShops2: ShopData[] = [
+  mockShop3
+]
+

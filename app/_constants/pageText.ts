@@ -31,9 +31,11 @@ export const PAGE_TITLES = {
 // ラベル名定数
 export const PAGE_LABELS = {
   BASE: {
-    NAME: '拠点'
+    VARIABLE_NAME: '拠点',
+    NAME: '拠点名'
   },
   SHOP: {
+    VARIABLE_NAME: '飲食店',
     NAME: '飲食店名',
     URL: 'GoogleMapのURL',
     ADDRESS: '住所',

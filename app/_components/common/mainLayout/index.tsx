@@ -21,7 +21,7 @@ const MainLayout = ({children}: {children: React.ReactNode}) => {
 
   // 拠点データが取得できなかった場合
   if(bases === null || base === null){
-    return <ErrorMessage errorMessage={GETTING_ERROR(PAGE_LABELS.BASE.NAME)}/>
+    return <ErrorMessage errorMessage={GETTING_ERROR(PAGE_LABELS.BASE.VARIABLE_NAME)}/>
   }
   return(
     <>

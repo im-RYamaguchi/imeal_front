@@ -7,7 +7,7 @@ export const AUTH_URL = {
   LOGIN: '/login',
   // ログアウト
   LOGOUT: '/logout'
-}
+};
 
 // ユーザー
 export const USERS_URL = {
@@ -19,4 +19,10 @@ export const USERS_URL = {
 export const BASES_URL = {
   // 取得
   GET: '/bases'
+};
+
+// 飲食店
+export const SHOPS_URL = {
+  // 取得
+  GET: (baseId?: number) => `/shops?baseId={${baseId}}`
 }
