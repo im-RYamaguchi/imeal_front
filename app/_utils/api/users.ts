@@ -6,6 +6,7 @@ import { api } from "./api";
 // ユーザー作成APIリクエスト
 export const createUser = async (signUpForm: SignUpFormData): Promise<UserData> => {
   try{
+    console.log("createUser");
     const response = await api.post<UserData>(USERS_URL.CREATE, signUpForm);
     return response.data;
   }catch(error){
