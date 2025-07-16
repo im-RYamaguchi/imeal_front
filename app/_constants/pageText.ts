@@ -51,3 +51,6 @@ export const HANDLE_NAME = {
 
 // 取得失敗定数
 export const GETTING_ERROR = (key: string) => `${key}が取得できませんでした`;
+
+// ヘッダー挨拶テキスト
+export const WELCOME_MESSAGE = (name: string) => `${name}さん、ようこそ！`;
