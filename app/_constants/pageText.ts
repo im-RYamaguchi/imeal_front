@@ -56,6 +56,7 @@ export const PAGE_LABELS = {
     MINUTES: (key: number) => `徒歩${key}分`
   },
   REVIEW: {
+    VARIABLE_NAME: '口コミ',
     COMMENT: 'コメント',
     AMOUNT: (key: number) => `${key}円`,
     EVALUATION: '評価',
