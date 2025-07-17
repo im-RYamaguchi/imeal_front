@@ -6,8 +6,10 @@ import Reviews from "@/app/_components/reviews";
 import Loading from "@/app/_components/common/loading";
 import ErrorMessage from "@/app/_components/error/errorMessage";
 import { useShopDetail } from "@/app/_hocks/useShopDetail";
+import LinkButton from "@/app/_components/button/linkButton";
 
 import styles from "./ShopDetailPage.module.css";
+import { PAGE_PATHS } from "@/app/_constants/pagePath";
 
 // グルメ詳細ページ
 const ShopDetailPage = () => {
@@ -36,6 +38,7 @@ const ShopDetailPage = () => {
 
       <h2>{PAGE_SUB_TITLES.SHOP_DETAIL.REVIEWS}</h2>
 
+      <LinkButton text={PAGE_TITLES.CREATE_REVIEW} href={PAGE_PATHS.CREATE_REVIEW(shopWithReviews.base.id, shopWithReviews.id)} />
       <Reviews reviews={shopWithReviews.reviews} />
     </>
   );
