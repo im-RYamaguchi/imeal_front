@@ -1,1 +1,5 @@
 /* トップページに適応するCSS */
+.content{
+  display: flex;
+  justify-content: space-around;
+}

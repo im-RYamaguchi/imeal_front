@@ -4,10 +4,14 @@
   display: flex;
 }
 
+.column{
+  flex-direction: column;
+}
+
 .review{
   display: flex;
   flex-direction: column;
-  margin: 0 1rem;
+  margin: 1rem;
   padding: 1rem;
   background-color: burlywood;
 }
