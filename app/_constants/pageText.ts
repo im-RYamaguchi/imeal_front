@@ -1,3 +1,4 @@
+// アプリ名
 export const APP_NAME = 'IMeal';
 
 // ページ名定数
@@ -28,6 +29,18 @@ export const PAGE_TITLES = {
   EDIT_USER: 'ユーザー編集ページ'
 } as const;
 
+// ページサブタイトル
+export const PAGE_SUB_TITLES = {
+  TOP: {
+    SHOPS_MAP: 'グルメマップ',
+    RECENT_REVIEWS: '最近の口コミ'
+  },
+  SHOP_DETAIL: {
+    SHOP_INFO: 'グルメ情報',
+    REVIEWS: '口コミ一覧'
+  }
+}
+
 // ラベル名定数
 export const PAGE_LABELS = {
   BASE: {
@@ -41,6 +54,13 @@ export const PAGE_LABELS = {
     ADDRESS: '住所',
     DISTANCE: (key: number) => `距離${key}m`,
     MINUTES: (key: number) => `徒歩${key}分`
+  },
+  REVIEW: {
+    COMMENT: 'コメント',
+    AMOUNT: (key: number) => `${key}円`,
+    EVALUATION: '評価',
+    CREATED_AT: '投稿日',
+    USER:'投稿者'
   },
   SIGN_UP_FORM: {
     NAME: '名前',

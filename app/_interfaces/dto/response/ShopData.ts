@@ -1,5 +1,6 @@
 import { BaseData } from "./BaseData";
 import { LocationData } from "./LocationData";
+import { ReviewData } from "./ReviewData";
 
 // 飲食店データ型
 export interface ShopData{

@@ -1,1 +1,7 @@
 /* グルメ詳細ページに適応するCSS */
+
+.shopInfo{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

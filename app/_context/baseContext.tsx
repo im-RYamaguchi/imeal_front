@@ -69,7 +69,6 @@ const BaseProvider = ({children}: {children: React.ReactNode}) => {
       setIsBaseLoading(false);
       return;
     }
-    console.log(bases);
     // IDが一致するベース取得
     const base = bases.find(base => base.id === baseId);
     //拠点セット（見つからなかった場合はnull）
