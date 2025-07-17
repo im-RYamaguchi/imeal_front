@@ -1,6 +1,7 @@
 import { BaseData } from "@/app/_interfaces/dto/response/BaseData";
 import { ReviewData } from "@/app/_interfaces/dto/response/ReviewData";
 import { ShopData } from "@/app/_interfaces/dto/response/ShopData";
+import { ShopWithReviewsData } from "@/app/_interfaces/dto/response/ShopWithReviewsData";
 import { UserData } from "@/app/_interfaces/dto/response/UserData";
 
 // テストユーザー
@@ -51,7 +52,7 @@ export const mockShop: ShopData = {
   location: {
     lat: 35.6430806,
     lon: 139.6609877
-  }
+  },
 };
 
 export const mockShop2: ShopData = {
@@ -115,5 +116,16 @@ export const mockReview2: ReviewData = {
 // テストレビューリストデータ
 export const mockReviews: ReviewData[] = [
   mockReview, mockReview2
-]
+];
+
+//  テストレビュー付きショップデータ
+export const mockShopWithReviews: ShopWithReviewsData = {
+  ...mockShop,
+  reviews: mockReviews
+}
+
+export const mockShopWithReviews2: ShopWithReviewsData = {
+  ...mockShop2,
+  reviews: []
+}
 
