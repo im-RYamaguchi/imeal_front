@@ -1,5 +1,19 @@
 import { BaseData } from "@/app/_interfaces/dto/response/BaseData";
+import { ReviewData } from "@/app/_interfaces/dto/response/ReviewData";
 import { ShopData } from "@/app/_interfaces/dto/response/ShopData";
+import { UserData } from "@/app/_interfaces/dto/response/UserData";
+
+// テストユーザー
+export const mockUser: UserData = {
+  id: 1,
+  name: '太郎'
+}
+
+export const mockUser2: UserData = {
+  id: 2,
+  name: '次郎'
+}
+
 
 // テスト拠点データ
 export const mockBase: BaseData = {
@@ -68,13 +82,38 @@ export const mockShop3: ShopData = {
   }
 };
 
-
-
 // テストショップリストデータ
 export const mockShops: ShopData[] = [
   mockShop, mockShop2
 ]
 export const mockShops2: ShopData[] = [
   mockShop3
+]
+
+// テストレビューデータ
+export const mockReview: ReviewData = {
+  id: 1,
+  img_path: '/images/udon.jpg',
+  comment: '美味しかった',
+  amount: 1100,
+  evaluation: 3,
+  createdAt: '2025-07-16 08:59:12.454462',
+  shop: mockShop,
+  user: mockUser
+}
+export const mockReview2: ReviewData = {
+  id: 2,
+  img_path: '/images/udon.jpg',
+  comment: '洋風カレーおすすめです',
+  amount: 1100,
+  evaluation: 5,
+  createdAt: '2025-07-17 17:59:12.454462',
+  shop: mockShop,
+  user: mockUser2
+}
+
+// テストレビューリストデータ
+export const mockReviews: ReviewData[] = [
+  mockReview, mockReview2
 ]
 

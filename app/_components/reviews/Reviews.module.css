@@ -1,0 +1,13 @@
+/* 口コミに対応するCSS */
+
+.reviews{
+  display: flex;
+}
+
+.review{
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem;
+  padding: 1rem;
+  background-color: burlywood;
+}

@@ -55,6 +55,13 @@ export const PAGE_LABELS = {
     DISTANCE: (key: number) => `距離${key}m`,
     MINUTES: (key: number) => `徒歩${key}分`
   },
+  REVIEW: {
+    COMMENT: 'コメント',
+    AMOUNT: (key: number) => `${key}円`,
+    EVALUATION: '評価',
+    CREATED_AT: '投稿日',
+    USER:'投稿者'
+  },
   SIGN_UP_FORM: {
     NAME: '名前',
     EMAIL: 'メールアドレス',
