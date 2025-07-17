@@ -68,7 +68,7 @@ export const useLogin = ({base}: useLoginParams) => {
   const handleLogin = async (loginForm: LoginFormData) => {
     try{
       // // APIリクエスト
-      login(loginForm);
+      await login(loginForm);
       // トップページ遷移
       router.push(PAGE_PATHS.TOP(base.id));
     }catch(error){
