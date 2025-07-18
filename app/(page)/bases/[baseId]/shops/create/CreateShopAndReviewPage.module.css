@@ -1,1 +1,6 @@
 /* グルメ・口コミ投稿ページに適応するCSS */
+.shopAndReviewForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

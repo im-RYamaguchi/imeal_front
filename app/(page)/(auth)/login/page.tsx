@@ -5,7 +5,6 @@ import { useLogin } from "@/app/_hocks/useLogin";
 
 import styles from "./LoginPage.module.css";
 import { useBase } from "@/app/_context/baseContext";
-import { useUser } from "@/app/_context/userContext";
 
 // ログインページ
 const LoginPage = () => {

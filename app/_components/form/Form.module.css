@@ -1,5 +1,6 @@
 /* フォームに対応するCSS */
 .form{
+  padding: 1rem;
   background-color: burlywood;
   width: 50vw;
 }

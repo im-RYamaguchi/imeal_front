@@ -52,8 +52,14 @@ export const PAGE_LABELS = {
     NAME: '飲食店名',
     URL: 'GoogleMapのURL',
     ADDRESS: '住所',
+    DIS: '拠点からの距離(m)',
+    MIN: '拠点から徒歩何分',
     DISTANCE: (key: number) => `距離${key}m`,
-    MINUTES: (key: number) => `徒歩${key}分`
+    MINUTES: (key: number) => `徒歩${key}分`,
+    LOCATION: {
+      LAT: '緯度',
+      LON: '経度'
+    }
   },
   REVIEW: {
     VARIABLE_NAME: '口コミ',

@@ -7,6 +7,9 @@ export const PASSWORD_MAX_LENGTH = 128;
 // (@ or space 以外の文字) + (@がある) + (@ or space 以外の文字) + (.がある) + (@ or space 以外の文字)
 export const EMAIL_PATTERN: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// shopバリデーション
+export const POSITIVE_INTEGER = 0
+
 // 空の場合のメッセージ
 export const BLANK_MESSAGE = (key: string) => `${key}を入力してください`;
 // 最大文字より長い場合のメッセージ
@@ -17,3 +20,4 @@ export const MIN_LENGTH_MESSAGE = (key: string, value: number) => `${key}は${va
 export const PATTERN_MESSAGE = (key: string) => `${key}形式で入力してください`;
 // パスワードと確認用パスワードが一致しない場合のメッセージ
 export const PASSWORD_CONFIRMATION_MESSAGE = 'パスワードと確認用パスワードが一致しませんでした';
+export const POSITIVE_INTEGER_MESSAGE = '正の整数で入力してください'
