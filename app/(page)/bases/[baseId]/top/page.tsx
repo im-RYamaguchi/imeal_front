@@ -40,7 +40,7 @@ const TopPage = () => {
 
         <div>
           <h2>{PAGE_SUB_TITLES.TOP.RECENT_REVIEWS}</h2>
-          <Reviews reviews={reviews} direction={'column'}/>
+          <Reviews reviews={reviews} direction={'column'} isAddingShop={true} />
         </div>
       </div>
     </>

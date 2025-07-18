@@ -1,5 +1,4 @@
 /* 口コミに対応するCSS */
-
 .reviews{
   display: flex;
 }
@@ -14,4 +13,8 @@
   margin: 1rem;
   padding: 1rem;
   background-color: burlywood;
+}
+
+.shopName{
+  font-size: 2rem;
 }

@@ -6,10 +6,11 @@ import styles from "./Reviews.module.css"
 interface ReviewsProps{
   reviews: ReviewData[];
   direction?: 'row' | 'column';
+  isAddingShop?:boolean;
 }
 
 // 口コミリスト表示
-const Reviews = ({reviews, direction}: ReviewsProps) => {
+const Reviews = ({reviews, direction, isAddingShop}: ReviewsProps) => {
   const classNames = [styles.reviews];
   if(direction === 'column'){
     classNames.push(styles.column);
@@ -17,7 +18,7 @@ const Reviews = ({reviews, direction}: ReviewsProps) => {
   return(
     <div className={classNames.join(' ')}>
       {reviews.map((review) => (
-        <Review key={review.id} review={review} />
+        <Review key={review.id} review={review} isAddingShop={isAddingShop} />
       ))}
     </div>
   );
