@@ -13,7 +13,7 @@ const ShopsPage = () => {
   // 万が一拠点がnullだった場合
   if(base === null) return;
   // グルメ一覧フック
-  const {shops, isShopLoading} = useShops({base});
+  const {shops, isShopLoading, handleDelete} = useShops({base});
 
   // 飲食店取得中の場合
   if(isShopLoading){
@@ -28,7 +28,7 @@ const ShopsPage = () => {
   return(
     <>
       <h1>{PAGE_TITLES.SHOPS}</h1>
-      <Shops shops={shops}/>
+      <Shops shops={shops} handleDelete={handleDelete} />
     </>
   );
 };

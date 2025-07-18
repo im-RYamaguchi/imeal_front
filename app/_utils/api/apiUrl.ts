@@ -27,7 +27,9 @@ export const SHOPS_URL = {
   GET: (baseId?: number) => `/shops?baseId={${baseId}}`,
   GET_WITH_REVIEWS: (shopId: number) => `/shops/${shopId}/reviews`,
   // 作成
-  POST: '/shops'
+  POST: '/shops',
+  // 削除
+  DELETE: (shopId: number) => `/shops/${shopId}`
 }
 
 // 口コミ
