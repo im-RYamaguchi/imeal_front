@@ -3,6 +3,11 @@ import { BaseData } from "../dto/response/BaseData";
 import { ShopData } from "../dto/response/ShopData";
 import { ShopWithReviewsData } from "../dto/response/ShopWithReviewsData";
 
+// 飲食店投稿APIのレスポンス全体の型
+export interface ShopApiResponse {
+  shop: ShopData
+}
+
 // 飲食店リスト取得APIのレスポンス全体の型
 export interface ShopsApiResponse {
   shops: ShopData[];

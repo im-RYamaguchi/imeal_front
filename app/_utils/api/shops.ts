@@ -1,10 +1,11 @@
 import { ShopData } from "@/app/_interfaces/dto/response/ShopData";
 import { api } from "./api";
 import { SHOPS_URL } from "./apiUrl";
-import { ShopsApiResponse, ShopWithReviewsAPIResponse } from "@/app/_interfaces/api/shops";
-import { mockShops, mockShops2, mockShopWithReviews, mockShopWithReviews2 } from "@/___tests___/mocks/data";
+import { ShopApiResponse, ShopsApiResponse, ShopWithReviewsAPIResponse } from "@/app/_interfaces/api/shops";
+import { mockShop } from "@/___tests___/mocks/data";
 import { ShopWithReviewsData } from "@/app/_interfaces/dto/response/ShopWithReviewsData";
 import { mockGetShops, mockGetShopWithReviews } from "@/___tests___/mocks/handlers";
+import { ShopFormData } from "@/app/_interfaces/dto/request/ShopFormData";
 
 // 飲食店一覧取得（baseIdでフィルター可能）
 export const getShops = async (baseId?: number): Promise<ShopData[]> => {
@@ -30,3 +31,16 @@ export const getShopWithReviews = async (shopId: number): Promise<ShopWithReview
     throw error;
   }
 };
+
+// 飲食店作成
+export const createShop = async (shopForm :ShopFormData): Promise<ShopData> => {
+  try{
+    // モック
+    return mockShop;
+    
+    const response = await api.post<ShopApiResponse>(SHOPS_URL.POST, shopForm);
+    return response.data.shop;
+  }catch(error){
+    throw error;
+  }
+}
