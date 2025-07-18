@@ -8,10 +8,10 @@ interface ButtonProps{
 };
 
 // ボタン
-const Button = ({text, onClick, styleType}: ButtonProps) => {
+const ClickButton = ({text, onClick, styleType}: ButtonProps) => {
   return(
     <button className={styles.button} onClick={onClick}>{text}</button>
   );
 };
 
-export default Button;
+export default ClickButton;

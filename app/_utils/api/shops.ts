@@ -44,3 +44,14 @@ export const createShop = async (shopForm :ShopFormData): Promise<ShopData> => {
     throw error;
   }
 }
+
+// 飲食店削除
+export const deleteShop = async (shopId: number): Promise<void> => {
+  try{
+    // テスト
+    return;
+    const response = await api.delete(SHOPS_URL.DELETE(shopId));
+  }catch(error){
+    throw error;
+  }
+};

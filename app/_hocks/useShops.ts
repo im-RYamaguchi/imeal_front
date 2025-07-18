@@ -2,7 +2,7 @@ import { BaseData } from "../_interfaces/dto/response/BaseData"
 import { useEffect, useState } from "react";
 import { extractErrorMessages } from "@/app/_utils/errorHandler";
 import { ShopData } from "@/app/_interfaces/dto/response/ShopData";
-import { getShops } from "@/app/_utils/api/shops";
+import { deleteShop, getShops } from "@/app/_utils/api/shops";
 
 
 interface useShopParams{
@@ -14,6 +14,24 @@ export const useShops = ({base}: useShopParams) => {
   const [shops, setShops] = useState<ShopData[] | null>(null);
   // 飲食店を取得中か
   const [isShopLoading, setIsShopLoading] = useState<boolean>(true);
+  // 飲食店削除処理
+  const handleDelete = async (shopId: number) => {
+    try{
+      // 削除APIリクエスト
+      await deleteShop(shopId);
+      // 飲食店リスト更新
+      if(shops === null){
+        setShops(null);
+      }else{
+        setShops(shops.filter((shop) => (
+          shop.id !== shopId
+        )));
+      }      
+    }catch(error){
+      // エラーメッセージコンソール表示
+      console.error(extractErrorMessages(error));
+    }
+  }
 
   // マウント時実行
   useEffect(() => {
@@ -36,5 +54,5 @@ export const useShops = ({base}: useShopParams) => {
     fetchShops();
   }, []);
 
-  return {shops, isShopLoading};
+  return {shops, isShopLoading, handleDelete};
 }
