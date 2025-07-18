@@ -19,6 +19,17 @@ export const useTop = ({base}: useTopParams) => {
   // ローディング中かどうか
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
+  // 口コミ削除処理
+  const handleDelete = async (reviewId: number) => {
+    try{
+      // 口コミ削除削除APIリクエスト
+      // 口コミ更新
+      
+    }catch(error){
+      console.error(extractErrorMessages(error));
+    }
+  }
+
   // マウント時実行
   useEffect(() => {
     // 飲食店と口コミ取得
@@ -46,5 +57,5 @@ export const useTop = ({base}: useTopParams) => {
     fetchShopsAndReviews();
   }, []);
 
-  return{shops, reviews, isLoading}
+  return{shops, reviews, isLoading, handleDelete}
 }
