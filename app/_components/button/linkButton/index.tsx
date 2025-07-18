@@ -4,7 +4,7 @@ import styles from './LinkButton.module.css'
 interface LinkButtonProps{
   text: string;
   href: string;
-  styleType?: 'shopName' | 'shopUrl' |string;
+  styleType?: 'shopName' | 'shopUrl' ;
 }
 
 // リンクボタン
