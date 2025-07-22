@@ -3,7 +3,6 @@ import { PAGE_TITLES } from "@/app/_constants/pageText";
 import Form from "@/app/_components/form";
 import { useCreateShopAndReview } from "@/app/_hocks/useCreateShopAndReview";
 import { useBase } from "@/app/_context/baseContext";
-
 import styles from "./CreateShopAndReviewPage.module.css"
 
 // グルメ・口コミ投稿ページ

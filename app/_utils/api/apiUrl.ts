@@ -24,7 +24,11 @@ export const BASES_URL = {
 // 飲食店
 export const SHOPS_URL = {
   // 取得
-  GET: (baseId?: number) => `/shops?baseId={${baseId}}`
+  GET: (baseId?: number) => `/shops?baseId={${baseId}}`,
+  GET_WITH_REVIEWS: (shopId: number) => `/shops/${shopId}/reviews`,
+  // 作成
+  POST: '/shops'
+  
 }
 //口コミ
 export const REVIEWS_URL = {

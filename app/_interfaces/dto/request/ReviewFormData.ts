@@ -1,5 +1,5 @@
 //口コミフォーム型
-export interface ReviewForm{
+export interface ReviewFormData{
   //写真のパス
   img: ImageData, 
   //コメント

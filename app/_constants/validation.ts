@@ -16,6 +16,10 @@ export const BLANK_MESSAGE = (key: string) => `${key}を入力してください
 export const MAX_LENGTH_MESSAGE = (key: string, value: number) => `${key}は${value}文字以下で入力してください`;
 // 最小文字より短い場合のメッセージ
 export const MIN_LENGTH_MESSAGE = (key: string, value: number) => `${key}は${value}文字以上で入力してください`;
+//評価０以下の場合のメッセージ
+export const MIN_EVALUATION_MESSAGE = (key: string, value: number) => `${key}は${value}以上で入力してください`;
+//評価５以下の場合のメッセージ
+export const MAX_EVALUATION_MESSAGE = (key: string, value: number) => `${key}は${value}以下で入力してください`;
 // パターンと一致しない場合のメッセージ
 export const PATTERN_MESSAGE = (key: string) => `${key}形式で入力してください`;
 // パスワードと確認用パスワードが一致しない場合のメッセージ
