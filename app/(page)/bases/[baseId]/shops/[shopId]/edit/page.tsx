@@ -15,6 +15,7 @@ import ErrorMessage from "@/app/_components/error/errorMessage";
 import { PAGE_PATHS } from "@/app/_constants/pagePath";
 import { useBase } from "@/app/_context/baseContext";
 import { ShopData } from "@/app/_interfaces/dto/response/ShopData";
+import { getShopById } from "@/app/_utils/api/shops";
 
 const inputs: FormInputData<ShopFormData>[] = [
   // url
@@ -148,14 +149,25 @@ const EditShopPage = () => {
         shopId = Number(paramShopId);    
       // 飲食店が空の場合
       }else{
+        // nullセット
+        setInitialShopForm(null);
         // ローディング終了
         setIsShopLoading(false);
         return;
       }
       try{
         // 飲食店取得APIリクエスト
-      
+        const shop = await getShopById(shopId);
         // 飲食店フォームセット
+        setInitialShopForm({
+          url: shop.url,
+          name: shop.name,
+          address: shop.address,
+          distance: shop.distance,
+          minutes: shop.minutes,
+          baseId: shop.base.id,
+          location: shop.location
+        });
         
       }catch(error){
         // エラーメッセージコンソール表示
