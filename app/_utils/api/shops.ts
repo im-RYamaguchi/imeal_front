@@ -58,6 +58,18 @@ export const createShop = async (shopForm :ShopFormData): Promise<ShopData> => {
   }
 }
 
+// 飲食店編集
+export const editShop = async (shopForm: ShopFormData, shopId: number): Promise<ShopData> => {
+  try{
+    // モック
+    return mockShop;
+    const response = await api.put<ShopApiResponse>(SHOPS_URL.PUT(shopId), shopForm);
+    return response.data.shop;
+  }catch(error){
+    throw error;
+  }
+}
+
 // 飲食店削除
 export const deleteShop = async (shopId: number): Promise<void> => {
   try{
