@@ -25,9 +25,12 @@ export const BASES_URL = {
 export const SHOPS_URL = {
   // 取得
   GET: (baseId?: number) => `/shops?baseId={${baseId}}`,
+  GET_BY_ID: (shopId: number) => `/shops/${shopId}`,
   GET_WITH_REVIEWS: (shopId: number) => `/shops/${shopId}/reviews`,
   // 作成
   POST: '/shops',
+  // 編集
+  PUT: (shopId: number) => `/shops/${shopId}`,
   // 削除
   DELETE: (shopId: number) => `/shops/${shopId}`
 }
