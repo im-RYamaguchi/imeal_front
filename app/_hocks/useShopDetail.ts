@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { ShopWithReviewsData } from "../_interfaces/dto/response/ShopWithReviewsData";
 import { useParams, useRouter } from "next/navigation";
-import { getShopWithReviews } from "../_utils/api/shops";
+import { deleteShop, getShopWithReviews } from "../_utils/api/shops";
 import { extractErrorMessages } from "../_utils/errorHandler";
 import { PAGE_PATHS } from "../_constants/pagePath";
 import { BaseData } from "../_interfaces/dto/response/BaseData";
+import { deleteReview } from "../_utils/api/reviews";
 
 interface useShopDetailParams{
   base: BaseData;
@@ -22,9 +23,10 @@ export const useShopDetail = ({base}: useShopDetailParams) => {
   const router = useRouter();
 
   // 飲食店削除処理
-  const handleDelete = (shopId: number) => {
+  const handleShopDelete = async (shopId: number) => {
     try{
-      // 飲食店削除API
+      // 削除APIリクエスト
+      await deleteShop(shopId);
 
       // 飲食店一覧ページ遷移
       router.push(PAGE_PATHS.SHOPS(base.id));
@@ -32,6 +34,27 @@ export const useShopDetail = ({base}: useShopDetailParams) => {
       // エラーメッセージコンソール表示
       console.error(extractErrorMessages(error));
     };
+  }
+
+  // 口コミ削除処理
+  const handleReviewDelete = async (reviewId: number) => {
+    try{
+      // 口コミ削除削除APIリクエスト
+      await deleteReview(reviewId);
+      // 口コミ更新
+      if(shopWithReviews === null){
+        setShopWithReviews(null);
+      }else{
+        const reviews = shopWithReviews.reviews.filter((review) => (
+          review.id !== reviewId
+        ));
+        setShopWithReviews({...shopWithReviews, reviews: reviews})
+      }
+      // 
+    }catch(error){
+      // エラーメッセージコンソール表示
+      console.error(extractErrorMessages(error));
+    }
   }
 
   // URLの飲食店ID変更時実行
@@ -62,5 +85,5 @@ export const useShopDetail = ({base}: useShopDetailParams) => {
     fetchShopWithReviews();
   }, [params.shopId]);
   
-  return{shopWithReviews, isShopWithReviewsLoading, handleDelete};
+  return{shopWithReviews, isShopWithReviewsLoading, handleShopDelete, handleReviewDelete};
 }
