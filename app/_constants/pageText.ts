@@ -85,7 +85,9 @@ export const PAGE_LABELS = {
 // 処理名定数
 export const HANDLE_NAME = {
   LOGOUT: 'ログアウト',
-  SUBMIT: '送信'
+  SUBMIT: '送信',
+  EDIT: '編集',
+  DELETE: '削除'
 } as const;
 
 // 取得失敗定数

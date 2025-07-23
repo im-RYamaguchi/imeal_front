@@ -14,6 +14,18 @@ export const getReviews = async (baseId?: number, limit?: number, sort?: string)
   }catch(error){
     throw error;
   }
+};
+
+// 口コミ削除APIリクエスト
+export const deleteReview = async (reviewId: number): Promise<void> => {
+  try{
+    // テスト
+    return;
+    const response = await api.delete(REVIEWS_URL.DELETE(reviewId));
+
+  }catch(error){
+    throw error;
+  }
 
 }
 

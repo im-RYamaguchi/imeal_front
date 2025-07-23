@@ -15,7 +15,7 @@ export const PAGE_PATHS = {
   // 口コミ投稿ページ
   CREATE_REVIEW: (baseId: number, shopId: number) => `/bases/${baseId}/shops/${shopId}/reviews/create`,
   // 口コミ編集ページ
-  EDIT_REVIEW: (baseId: number, shopId: number, reviewId: number) => `/bases/${baseId}/shops/${shopId}/review/${reviewId}/edit`,
+  EDIT_REVIEW: (baseId: number, shopId: number, reviewId: number) => `/bases/${baseId}/shops/${shopId}/reviews/${reviewId}/edit`,
   // サインアップページ
   SIGN_UP: '/sign_up',
   // ログインページ

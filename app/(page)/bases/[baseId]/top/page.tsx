@@ -16,7 +16,7 @@ const TopPage = () => {
   if(base === null) return;
 
   // トップページフック
-  const {shops, reviews, isLoading} = useTop({base: base});
+  const {shops, reviews, isLoading, handleDelete} = useTop({base: base});
 
   // ローディング中の場合
   if(isLoading){
@@ -40,7 +40,7 @@ const TopPage = () => {
 
         <div>
           <h2>{PAGE_SUB_TITLES.TOP.RECENT_REVIEWS}</h2>
-          <Reviews reviews={reviews} direction={'column'} isAddingShop={true} />
+          <Reviews reviews={reviews} direction={'column'} isAddingShop={true} handleDelete={handleDelete} />
         </div>
       </div>
     </>

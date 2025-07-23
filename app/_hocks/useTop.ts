@@ -3,7 +3,7 @@ import { ShopData } from "../_interfaces/dto/response/ShopData";
 import { ReviewData } from "../_interfaces/dto/response/ReviewData";
 import { getShops } from "../_utils/api/shops";
 import { BaseData } from "../_interfaces/dto/response/BaseData";
-import { getReviews } from "../_utils/api/reviews";
+import { deleteReview, getReviews } from "../_utils/api/reviews";
 import { REVIEW_LIMIT, SORT_CREATED_AT_DESC } from "../_constants/handleConstant";
 import { extractErrorMessages } from "../_utils/errorHandler";
 
@@ -18,6 +18,25 @@ export const useTop = ({base}: useTopParams) => {
   const [reviews, setReviews] = useState<ReviewData[] | null>(null);
   // ローディング中かどうか
   const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  // 口コミ削除処理
+  const handleDelete = async (reviewId: number) => {
+    try{
+      // 口コミ削除削除APIリクエスト
+      await deleteReview(reviewId);
+      // 口コミ更新
+      if(reviews === null){
+        setReviews(null);
+      }else{
+        setReviews(reviews.filter((review) => (
+          review.id === reviewId
+        )));
+      }
+      
+    }catch(error){
+      console.error(extractErrorMessages(error));
+    }
+  }
 
   // マウント時実行
   useEffect(() => {
@@ -46,5 +65,5 @@ export const useTop = ({base}: useTopParams) => {
     fetchShopsAndReviews();
   }, []);
 
-  return{shops, reviews, isLoading}
+  return{shops, reviews, isLoading, handleDelete}
 }
