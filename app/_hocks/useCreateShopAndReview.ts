@@ -166,7 +166,8 @@ export const useCreateShopAndReview = ({base}: useCreateShopAndReviewParams) => 
         comment: form.comment,
         amount: form.amount,
         evaluation: form.evaluation,
-        shopId: shop.id
+        shopId: shop.id,
+        imgPath: '画像'
       });
 
       // 飲食店詳細ページ遷移

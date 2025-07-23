@@ -15,6 +15,6 @@ export interface ShopsApiResponse {
 
 // 飲食店とその口コミ取得APIのレスポンス全体の型
 export interface ShopWithReviewsAPIResponse {
-  shopWithReview: ShopWithReviewsData;
+  shop: ShopWithReviewsData;
 }
 

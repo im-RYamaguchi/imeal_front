@@ -29,7 +29,7 @@ export const getShops = async (baseId?: number): Promise<ShopData[]> => {
 export const getShopWithReviews = async (shopId: number): Promise<ShopWithReviewsData> => {
   try{
     const response = await api.get<ShopWithReviewsAPIResponse>(SHOPS_URL.GET_WITH_REVIEWS(shopId));
-    return response.data.shopWithReview;
+    return response.data.shop;
   }catch(error){
     throw error;
   }

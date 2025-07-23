@@ -80,7 +80,7 @@ export const useCreateReview = () => {
     if(shop === null) return;
     try {
       //口コミ送信API
-      const review = await createReview({ ...reviewForm});
+      const review = await createReview({ ...reviewForm, shopId: shop.id, imgPath: "画像"});
       // グルメ詳細ページ遷移
       router.push(PAGE_PATHS.SHOP_DETAIL(shop.base.id, shop.id));
     }catch(error){
