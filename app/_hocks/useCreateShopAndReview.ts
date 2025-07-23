@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { PAGE_LABELS } from "../_constants/pageText";
-import { BLANK_MESSAGE, POSITIVE_INTEGER, POSITIVE_INTEGER_MESSAGE } from "../_constants/validation";
+import { BLANK_MESSAGE, EVALUATION_MAX, EVALUATION_MIN, EVALUATION_VALIDATION_MESSAGE, MAX_NUMBER_MESSAGE, MIN_NUMBER_MESSAGE, POSITIVE_INTEGER, POSITIVE_INTEGER_MESSAGE } from "../_constants/validation";
 import { ShopFormData } from "../_interfaces/dto/request/ShopFormData";
 import { FormInputData } from "../_interfaces/FormInputData";
 import { useForm } from "react-hook-form";
@@ -10,8 +10,9 @@ import { useRouter } from "next/navigation";
 import { createShop } from "../_utils/api/shops";
 import { BaseData } from "../_interfaces/dto/response/BaseData";
 import { PAGE_PATHS } from "../_constants/pagePath";
+import { ShopAndReviewFormData } from "../_interfaces/dto/request/ShopAndReviewFormData";
 
-const inputs: FormInputData<ShopFormData>[] = [
+const inputs: FormInputData<ShopAndReviewFormData>[] = [
   // url
   {
     labelText: PAGE_LABELS.SHOP.URL,
@@ -93,6 +94,44 @@ const inputs: FormInputData<ShopFormData>[] = [
       required: BLANK_MESSAGE(PAGE_LABELS.SHOP.LOCATION.LON)
     }
   },
+  // コメント
+  { 
+    labelText: PAGE_LABELS.REVIEW.COMMENT,
+    type: 'text',
+    placeholderText: PAGE_LABELS.REVIEW.COMMENT,
+    name: 'comment',
+    validationRules: {
+      required: BLANK_MESSAGE(PAGE_LABELS.REVIEW.COMMENT)
+    }
+  },
+  // 金額
+  {
+    labelText: PAGE_LABELS.REVIEW.AMO,
+    type: 'number',
+    placeholderText: PAGE_LABELS.REVIEW.AMO,
+    name: 'amount',
+    validationRules: {
+      required: BLANK_MESSAGE(PAGE_LABELS.REVIEW.AMO)
+    }
+  },
+  // 評価
+  {
+    labelText: PAGE_LABELS.REVIEW.EVALUATION,
+    type: 'number',
+    placeholderText: EVALUATION_VALIDATION_MESSAGE,
+    name: 'evaluation',
+    validationRules: {
+      required: BLANK_MESSAGE(PAGE_LABELS.REVIEW.EVALUATION),
+      min:{
+        value: EVALUATION_MIN,
+        message: MIN_NUMBER_MESSAGE(PAGE_LABELS.REVIEW.EVALUATION, EVALUATION_MIN)
+      },
+      max:{ 
+        value: EVALUATION_MAX,
+        message: MAX_NUMBER_MESSAGE(PAGE_LABELS.REVIEW.EVALUATION, EVALUATION_MAX)
+      }
+    }
+  },
 ];
 
 interface useCreateShopAndReviewParams{
@@ -101,7 +140,7 @@ interface useCreateShopAndReviewParams{
 
 export const useCreateShopAndReview = ({base}: useCreateShopAndReviewParams) => {
   // フォームオブジェクト
-  const {register, handleSubmit, formState: {errors}} = useForm<ShopFormData>({defaultValues: mockShop});
+  const {register, handleSubmit, formState: {errors}} = useForm<ShopAndReviewFormData>({defaultValues: mockShop});
   // サーバエラーメッセージ状態管理
   const [serverErrorMessages, setServerErrorMessages] = useState<string[]>([]);
   const router = useRouter();
