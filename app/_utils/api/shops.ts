@@ -48,6 +48,7 @@ export const getShopWithReviews = async (shopId: number): Promise<ShopWithReview
 // 飲食店作成
 export const createShop = async (shopForm :ShopFormData): Promise<ShopData> => {
   try{
+    console.log(shopForm);
     // モック
     return mockShop;
     

@@ -1,14 +1,12 @@
 "use client";
-import { mockReview, mockShop } from "@/___tests___/mocks/data";
+import { mockReview } from "@/___tests___/mocks/data";
 import { PAGE_LABELS } from "../_constants/pageText";
-import { BLANK_MESSAGE, MIN_EVALUATION_MESSAGE, MAX_EVALUATION_MESSAGE } from "../_constants/validation";
+import { BLANK_MESSAGE, EVALUATION_MAX, EVALUATION_MIN, EVALUATION_VALIDATION_MESSAGE, MAX_NUMBER_MESSAGE, MIN_NUMBER_MESSAGE, POSITIVE_INTEGER, POSITIVE_INTEGER_MESSAGE } from "../_constants/validation";
 import { ReviewFormData } from "../_interfaces/dto/request/ReviewFormData";
-import { ShopFormData } from "../_interfaces/dto/request/ShopFormData";
 import { BaseData } from "../_interfaces/dto/response/BaseData";
 import { FormInputData } from "../_interfaces/FormInputData";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { trackSynchronousPlatformIOAccessInDev } from "next/dist/server/app-render/dynamic-rendering";
 import { useRouter } from "next/navigation";
 import { createReview } from "../_utils/api/reviews";
 import { extractErrorMessages } from "../_utils/errorHandler";
@@ -27,12 +25,16 @@ const inputs: FormInputData<ReviewFormData>[] = [
 
   //金額
   {
-    labelText: PAGE_LABELS.REVIEW.AMO,
+    labelText: PAGE_LABELS.REVIEW.AMOUNT,
     type: 'number',
-    placeholderText: PAGE_LABELS.REVIEW.AMO,
+    placeholderText: PAGE_LABELS.REVIEW.AMOUNT,
     name: 'amount',
     validationRules: {
-      required: BLANK_MESSAGE(PAGE_LABELS.REVIEW.AMO)
+      required: BLANK_MESSAGE(PAGE_LABELS.REVIEW.AMOUNT),
+      min: {
+        value: POSITIVE_INTEGER,
+        message: POSITIVE_INTEGER_MESSAGE
+      }
     }
   },
 
@@ -40,12 +42,18 @@ const inputs: FormInputData<ReviewFormData>[] = [
   {
     labelText: PAGE_LABELS.REVIEW.EVALUATION,
     type: 'number',
-    placeholderText: '評価を０～５で入力',
+    placeholderText: EVALUATION_VALIDATION_MESSAGE,
     name: 'evaluation',
     validationRules: {
       required: BLANK_MESSAGE(PAGE_LABELS.REVIEW.EVALUATION),
-      min:{ value: 0,message:MIN_EVALUATION_MESSAGE(PAGE_LABELS.REVIEW.EVALUATION,0)},
-      max:{ value: 5,message:MAX_EVALUATION_MESSAGE(PAGE_LABELS.REVIEW.EVALUATION,5)}
+      min:{ 
+        value: EVALUATION_MIN,
+        message: MIN_NUMBER_MESSAGE(PAGE_LABELS.REVIEW.EVALUATION, EVALUATION_MIN)
+      },
+      max:{ 
+        value: EVALUATION_MAX,
+        message:MAX_NUMBER_MESSAGE(PAGE_LABELS.REVIEW.EVALUATION, EVALUATION_MAX)
+      }
     }
   },
 
@@ -55,7 +63,7 @@ interface useReviewParams {
   base: BaseData;
 }
 
-export const useReview = ({ base }: useReviewParams) => {
+export const useCreateReview = ({ base }: useReviewParams) => {
   //フォームオブジェクト
   const { register, handleSubmit, formState: { errors } } = useForm<ReviewFormData>({ defaultValues: mockReview });
 
@@ -70,6 +78,7 @@ export const useReview = ({ base }: useReviewParams) => {
     try {
       //口コミ送信API
       const review = await createReview({ ...reviewForm});
+
     }catch(error){
       setServerErrorMessages(extractErrorMessages(error));
     }

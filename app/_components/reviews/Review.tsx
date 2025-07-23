@@ -30,7 +30,7 @@ const Review = ({review, isAddingShop, handleDelete}: ReviewProps) => {
       <p>{PAGE_LABELS.REVIEW.CREATED_AT}：{review.createdAt}</p>
       <p>{PAGE_LABELS.REVIEW.USER}：{review.user.name}</p>
       <p>{PAGE_LABELS.REVIEW.COMMENT}：{review.comment}</p>
-      <p>{PAGE_LABELS.REVIEW.AMOUNT(review.amount)}</p>
+      <p>{PAGE_LABELS.REVIEW.AMOUNT_TYPE(review.amount)}</p>
       <p>{PAGE_LABELS.REVIEW.EVALUATION}：{review.evaluation}</p>
       <LinkButton text={HANDLE_NAME.EDIT} href={PAGE_PATHS.EDIT_REVIEW(review.shop.base.id, review.shop.id, review.id)} />
       <ClickButton text={HANDLE_NAME.DELETE} onClick={onClick} />

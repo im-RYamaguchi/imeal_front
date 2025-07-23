@@ -8,7 +8,12 @@ export const PASSWORD_MAX_LENGTH = 128;
 export const EMAIL_PATTERN: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // shopバリデーション
-export const POSITIVE_INTEGER = 0
+export const POSITIVE_INTEGER = 0;
+
+// reviewバリデーション
+export const EVALUATION_MIN = 0;
+export const EVALUATION_MAX = 5;
+export const EVALUATION_VALIDATION_MESSAGE = `${EVALUATION_MIN}～${EVALUATION_MAX}で入力してください`;
 
 // 空の場合のメッセージ
 export const BLANK_MESSAGE = (key: string) => `${key}を入力してください`;
@@ -16,10 +21,10 @@ export const BLANK_MESSAGE = (key: string) => `${key}を入力してください
 export const MAX_LENGTH_MESSAGE = (key: string, value: number) => `${key}は${value}文字以下で入力してください`;
 // 最小文字より短い場合のメッセージ
 export const MIN_LENGTH_MESSAGE = (key: string, value: number) => `${key}は${value}文字以上で入力してください`;
-//評価０以下の場合のメッセージ
-export const MIN_EVALUATION_MESSAGE = (key: string, value: number) => `${key}は${value}以上で入力してください`;
-//評価５以下の場合のメッセージ
-export const MAX_EVALUATION_MESSAGE = (key: string, value: number) => `${key}は${value}以下で入力してください`;
+//最小値より小さい場合のメッセージ
+export const MIN_NUMBER_MESSAGE = (key: string, value: number) => `${key}は${value}以上で入力してください`;
+//最大値より大きい場合のメッセージ
+export const MAX_NUMBER_MESSAGE = (key: string, value: number) => `${key}は${value}以下で入力してください`;
 // パターンと一致しない場合のメッセージ
 export const PATTERN_MESSAGE = (key: string) => `${key}形式で入力してください`;
 // パスワードと確認用パスワードが一致しない場合のメッセージ
