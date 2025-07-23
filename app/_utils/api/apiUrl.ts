@@ -34,11 +34,12 @@ export const SHOPS_URL = {
   // 削除
   DELETE: (shopId: number) => `/shops/${shopId}`
 }
-
-// 口コミ
+//口コミ
 export const REVIEWS_URL = {
   // 取得
   GET: (baseId?: number, limit?: number, sort?: string) => `/reviews?baseId={${baseId}}&limit={${limit}}&sort={${sort}}`,
+  // 作成
+  CREATE: '/reviews',
   // 削除
   DELETE: (reviewId: number) => `/reviews/${reviewId}`
-}
+};

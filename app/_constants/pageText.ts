@@ -64,6 +64,7 @@ export const PAGE_LABELS = {
   REVIEW: {
     VARIABLE_NAME: '口コミ',
     COMMENT: 'コメント',
+    AMO: '金額',
     AMOUNT: (key: number) => `${key}円`,
     EVALUATION: '評価',
     CREATED_AT: '投稿日',
