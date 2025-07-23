@@ -4,10 +4,9 @@ import Form from "@/app/_components/form";
 import ErrorMessage from "@/app/_components/error/errorMessage";
 import Loading from "@/app/_components/common/loading";
 import { useBase } from "@/app/_context/baseContext";
-
-import styles from "./EditShopPage.module.css"
 import { useEditShop } from "@/app/_hocks/useEditShop";
 
+import styles from "./EditShopPage.module.css"
 
 // グルメ編集ページ
 const EditShopPage = () => {
@@ -18,15 +17,11 @@ const EditShopPage = () => {
 
   // グルメ編集フック
   const {
-    isShopLoading,
-    initialShopForm,
+    shop, isShopLoading,
     serverErrorMessages,
-    handleEdit,
-    handleSubmit,
-    register,
-    errors,
+    handleEdit, handleSubmit, register, errors, 
     inputs
-  } = useEditShop({base: base});
+  } = useEditShop();
 
 
   // 飲食店をローディング中の場合
@@ -35,7 +30,7 @@ const EditShopPage = () => {
   }
 
   // 飲食店が空の場合
-  if(initialShopForm === null){
+  if(shop === null){
     return <ErrorMessage errorMessage={GETTING_ERROR(PAGE_LABELS.SHOP.VARIABLE_NAME)} />
   }
 

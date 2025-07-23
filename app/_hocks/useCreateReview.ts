@@ -3,7 +3,6 @@ import { mockReview } from "@/___tests___/mocks/data";
 import { PAGE_LABELS } from "../_constants/pageText";
 import { BLANK_MESSAGE, EVALUATION_MAX, EVALUATION_MIN, EVALUATION_VALIDATION_MESSAGE, MAX_NUMBER_MESSAGE, MIN_NUMBER_MESSAGE, POSITIVE_INTEGER, POSITIVE_INTEGER_MESSAGE } from "../_constants/validation";
 import { ReviewFormData } from "../_interfaces/dto/request/ReviewFormData";
-import { BaseData } from "../_interfaces/dto/response/BaseData";
 import { FormInputData } from "../_interfaces/FormInputData";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
@@ -62,11 +61,7 @@ const inputs: FormInputData<ReviewFormData>[] = [
 
 ];
 
-interface useReviewParams {
-  base: BaseData;
-}
-
-export const useCreateReview = ({ base }: useReviewParams) => {
+export const useCreateReview = () => {
   //フォームオブジェクト
   const { register, handleSubmit, formState: { errors } } = useForm<ReviewFormData>({ defaultValues: mockReview });
 
