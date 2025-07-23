@@ -3,7 +3,6 @@ import { PAGE_LABELS } from "../_constants/pageText";
 import { BLANK_MESSAGE, EVALUATION_MAX, EVALUATION_MIN, EVALUATION_VALIDATION_MESSAGE, MAX_NUMBER_MESSAGE, MIN_NUMBER_MESSAGE, POSITIVE_INTEGER, POSITIVE_INTEGER_MESSAGE } from "../_constants/validation";
 import { FormInputData } from "../_interfaces/FormInputData";
 import { useForm } from "react-hook-form";
-import { mockShop } from "@/___tests___/mocks/data";
 import { extractErrorMessages } from "../_utils/errorHandler";
 import { useRouter } from "next/navigation";
 import { createShop } from "../_utils/api/shops";
@@ -144,7 +143,7 @@ interface useCreateShopAndReviewParams{
 
 export const useCreateShopAndReview = ({base}: useCreateShopAndReviewParams) => {
   // フォームオブジェクト
-  const {register, handleSubmit, formState: {errors}} = useForm<ShopAndReviewFormData>({defaultValues: mockShop});
+  const {register, handleSubmit, formState: {errors}} = useForm<ShopAndReviewFormData>();
   // サーバエラーメッセージ状態管理
   const [serverErrorMessages, setServerErrorMessages] = useState<string[]>([]);
   const router = useRouter();

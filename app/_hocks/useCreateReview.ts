@@ -1,5 +1,4 @@
 "use client";
-import { mockReview } from "@/___tests___/mocks/data";
 import { PAGE_LABELS } from "../_constants/pageText";
 import { BLANK_MESSAGE, EVALUATION_MAX, EVALUATION_MIN, EVALUATION_VALIDATION_MESSAGE, MAX_NUMBER_MESSAGE, MIN_NUMBER_MESSAGE, POSITIVE_INTEGER, POSITIVE_INTEGER_MESSAGE } from "../_constants/validation";
 import { ReviewFormData } from "../_interfaces/dto/request/ReviewFormData";
@@ -63,7 +62,7 @@ const inputs: FormInputData<ReviewFormData>[] = [
 
 export const useCreateReview = () => {
   //フォームオブジェクト
-  const { register, handleSubmit, formState: { errors } } = useForm<ReviewFormData>({ defaultValues: mockReview });
+  const { register, handleSubmit, formState: { errors } } = useForm<ReviewFormData>();
 
   //サーバーエラーメッセージ状態管理
   const [serverErrorMessages, setServerErrorMessages] = useState<string[]>([]);
