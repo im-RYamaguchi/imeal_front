@@ -1,7 +1,7 @@
 "use client";
 import { mockReview } from "@/___tests___/mocks/data";
 import { PAGE_LABELS } from "../_constants/pageText";
-import { BLANK_MESSAGE, EVALUATION_MAX, EVALUATION_MIN, EVALUATION_VALIDATION_MESSAGE, MAX_NUMBER_MESSAGE, MIN_NUMBER_MESSAGE } from "../_constants/validation";
+import { BLANK_MESSAGE, EVALUATION_MAX, EVALUATION_MIN, EVALUATION_VALIDATION_MESSAGE, MAX_NUMBER_MESSAGE, MIN_NUMBER_MESSAGE, POSITIVE_INTEGER, POSITIVE_INTEGER_MESSAGE } from "../_constants/validation";
 import { ReviewFormData } from "../_interfaces/dto/request/ReviewFormData";
 import { BaseData } from "../_interfaces/dto/response/BaseData";
 import { FormInputData } from "../_interfaces/FormInputData";
@@ -25,12 +25,16 @@ const inputs: FormInputData<ReviewFormData>[] = [
 
   //金額
   {
-    labelText: PAGE_LABELS.REVIEW.AMO,
+    labelText: PAGE_LABELS.REVIEW.AMOUNT,
     type: 'number',
-    placeholderText: PAGE_LABELS.REVIEW.AMO,
+    placeholderText: PAGE_LABELS.REVIEW.AMOUNT,
     name: 'amount',
     validationRules: {
-      required: BLANK_MESSAGE(PAGE_LABELS.REVIEW.AMO)
+      required: BLANK_MESSAGE(PAGE_LABELS.REVIEW.AMOUNT),
+      min: {
+        value: POSITIVE_INTEGER,
+        message: POSITIVE_INTEGER_MESSAGE
+      }
     }
   },
 
@@ -59,7 +63,7 @@ interface useReviewParams {
   base: BaseData;
 }
 
-export const useReview = ({ base }: useReviewParams) => {
+export const useCreateReview = ({ base }: useReviewParams) => {
   //フォームオブジェクト
   const { register, handleSubmit, formState: { errors } } = useForm<ReviewFormData>({ defaultValues: mockReview });
 
@@ -74,6 +78,7 @@ export const useReview = ({ base }: useReviewParams) => {
     try {
       //口コミ送信API
       const review = await createReview({ ...reviewForm});
+
     }catch(error){
       setServerErrorMessages(extractErrorMessages(error));
     }

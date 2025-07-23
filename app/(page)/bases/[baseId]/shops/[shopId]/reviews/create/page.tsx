@@ -1,7 +1,7 @@
 "use client"
 
 import { PAGE_TITLES } from "@/app/_constants/pageText";
-import { useReview } from "@/app/_hocks/useReview";
+import { useCreateReview } from "@/app/_hocks/useReview";
 import { base } from "@/app/_test/testData";
 import Form from "@/app/_components/form";
 
@@ -9,7 +9,7 @@ import Form from "@/app/_components/form";
 // 口コミ投稿ページ
 const CreateReviewPage = () => {
 
-  const {handleCreateReview,handleSubmit,serverErrorMessages,register,errors,inputs} = useReview({base: base});
+  const {handleCreateReview,handleSubmit,serverErrorMessages,register,errors,inputs} = useCreateReview({base: base});
   return (
     <div>
       <h1>{PAGE_TITLES.CREATE_REVIEW}</h1>

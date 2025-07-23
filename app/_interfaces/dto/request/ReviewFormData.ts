@@ -1,7 +1,5 @@
 //口コミフォーム型
 export interface ReviewFormData{
-  //写真のパス
-  img: ImageData, 
   //コメント
   comment: String,
   //金額

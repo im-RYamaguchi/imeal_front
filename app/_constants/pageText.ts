@@ -1,3 +1,5 @@
+import { EVALUATION_MAX, EVALUATION_MIN } from "./validation";
+
 // アプリ名
 export const APP_NAME = 'IMeal';
 
@@ -52,10 +54,10 @@ export const PAGE_LABELS = {
     NAME: '飲食店名',
     URL: 'GoogleMapのURL',
     ADDRESS: '住所',
-    DIS: '拠点からの距離(m)',
-    MIN: '拠点から徒歩何分',
-    DISTANCE: (key: number) => `距離${key}m`,
-    MINUTES: (key: number) => `徒歩${key}分`,
+    DISTANCE: '拠点からの距離(m)',
+    MINUTES: '拠点から徒歩何分',
+    DISTANCE_TYPE: (key: number) => `距離${key}m`,
+    MINUTES_TYPE: (key: number) => `徒歩${key}分`,
     LOCATION: {
       LAT: '緯度',
       LON: '経度'
@@ -64,8 +66,8 @@ export const PAGE_LABELS = {
   REVIEW: {
     VARIABLE_NAME: '口コミ',
     COMMENT: 'コメント',
-    AMO: '金額',
-    AMOUNT: (key: number) => `${key}円`,
+    AMOUNT: '金額',
+    AMOUNT_TYPE: (key: number) => `${key}円`,
     EVALUATION: '評価',
     CREATED_AT: '投稿日',
     USER:'投稿者'

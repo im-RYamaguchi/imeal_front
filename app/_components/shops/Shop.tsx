@@ -23,8 +23,8 @@ const Shop = ({shop, handleDelete}: ShopProps) => {
       <LinkButton text={shop.name} href={PAGE_PATHS.SHOP_DETAIL(shop.base.id, shop.id)} styleType={'shopName'} />
       <LinkButton text={PAGE_LABELS.SHOP.URL} href={shop.url} styleType={'shopUrl'}/>
       <p>{PAGE_LABELS.SHOP.ADDRESS}：{shop.address}</p>
-      <p>{PAGE_LABELS.SHOP.DISTANCE(shop.distance)}</p>
-      <p>{PAGE_LABELS.SHOP.MINUTES(shop.minutes)}</p>
+      <p>{PAGE_LABELS.SHOP.DISTANCE_TYPE(shop.distance)}</p>
+      <p>{PAGE_LABELS.SHOP.MINUTES_TYPE(shop.minutes)}</p>
       <LinkButton text={HANDLE_NAME.EDIT} href={PAGE_PATHS.EDIT_SHOP(shop.base.id, shop.id)} />
       <ClickButton text={HANDLE_NAME.DELETE} onClick={onClick} />
       
