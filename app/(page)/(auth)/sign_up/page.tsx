@@ -12,7 +12,7 @@ const SignUpPage = () => {
   // 万が一拠点がnullの場合
   if(base === null) return;
   // サインアップのフック
-  const {register, handleSubmit, handleSignUp, serverErrorMessages, errors, inputs} = useSignUp({base});
+  const {register, handleSubmit, handleSignUp, serverErrorMessages, errors, fields} = useSignUp({base});
   
   return(
     <div className={styles.signUp}>
@@ -24,7 +24,7 @@ const SignUpPage = () => {
         handleSubmit={handleSubmit}
         register={register}
         errors={errors}
-        inputs={inputs}
+        fields={fields}
       />
 
     </div>

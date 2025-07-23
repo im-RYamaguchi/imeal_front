@@ -18,25 +18,25 @@ interface FormProps<TFormData extends FieldValues>{
   register: UseFormRegister<TFormData>;
   errors?: FieldErrors<TFormData>;
   // インプット要素
-  inputs: FormInputData<TFormData>[];
+  fields: FormInputData<TFormData>[];
 }
 
 // フォーム
-const Form = <TFormData extends FieldValues>({serverErrorMessages, onSubmit, handleSubmit, register, errors  = {} as FieldErrors<TFormData>, inputs}: FormProps<TFormData>) => {
+const Form = <TFormData extends FieldValues>({serverErrorMessages, onSubmit, handleSubmit, register, errors  = {} as FieldErrors<TFormData>, fields}: FormProps<TFormData>) => {
   return(
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       {serverErrorMessages.length > 0 && <ErrorMessageList errorMessages={serverErrorMessages} />}
 
-      {inputs.map((input, index) => {
-        const fieldError = getNestedError(errors, input.name);
+      {fields.map((fields, index) => {
+        const fieldError = getNestedError(errors, fields.name);
         return(
-          <InputField key={`${index}_${input.name}`}
+          <InputField key={`${index}_${fields.name}`}
           error={fieldError as FieldError | undefined}
-          label={input.labelText}
-          name={input.name}
-          type={input.type}
-          placeholder={input.placeholderText}
-          validationRules={input.validationRules}
+          label={fields.labelText}
+          name={fields.name}
+          type={fields.type}
+          placeholder={fields.placeholderText}
+          validationRules={fields.validationRules}
           register={register}
           />
         );
