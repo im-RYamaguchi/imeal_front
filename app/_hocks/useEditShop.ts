@@ -1,4 +1,4 @@
-import { GETTING_ERROR, PAGE_LABELS, PAGE_TITLES } from "@/app/_constants/pageText";
+import { PAGE_LABELS } from "@/app/_constants/pageText";
 import { ShopFormData } from "@/app/_interfaces/dto/request/ShopFormData";
 import { useParams, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -8,7 +8,7 @@ import { BLANK_MESSAGE, POSITIVE_INTEGER, POSITIVE_INTEGER_MESSAGE } from "@/app
 import { extractErrorMessages } from "@/app/_utils/errorHandler";
 import { PAGE_PATHS } from "@/app/_constants/pagePath";
 import { editShop, getShopById } from "@/app/_utils/api/shops";
-import { BaseData } from "../_interfaces/dto/response/BaseData";
+import { ShopData } from "../_interfaces/dto/response/ShopData";
 
 const inputs: FormInputData<ShopFormData>[] = [
   // url
@@ -94,33 +94,28 @@ const inputs: FormInputData<ShopFormData>[] = [
   },
 ];
 
-interface useEditShopParams{
-  base: BaseData;
-}
-
-
-export const useEditShop = ({base}: useEditShopParams) => {
+export const useEditShop = () => {
   // フォームオブジェクト
   const {register, handleSubmit, formState: {errors}, reset} = useForm<ShopFormData>();
   // ルーターオブジェクト
   const router = useRouter();
   // サーバーからのエラーメッセージリスト状態管理
   const [serverErrorMessages, setServerErrorMessages] = useState<string[]>([]);
+  const [shop, setShop] = useState<ShopData | null>(null);
   const [initialShopForm, setInitialShopForm] = useState<ShopFormData | null>(null);
   // 飲食店をローディング中かどうか
   const [isShopLoading, setIsShopLoading] = useState<boolean>(true);
   // URLパラメータ取得
   const params = useParams();
-  // 飲食店ID
-  let shopId: number;
 
   // 編集処理
   const handleEdit = async (shopForm: ShopFormData) => {
+    if(shop === null) return; 
     try{
       // 飲食店編集APIリクエスト
-      const shop = editShop(shopForm, shopId);
+      const responseShop = await editShop(shopForm, shop.id);
       // 飲食店詳細ページ移動
-      router.push(PAGE_PATHS.SHOP_DETAIL(base.id, shopId))
+      router.push(PAGE_PATHS.SHOP_DETAIL(shop.base.id, shop.id))
     }catch(error){
       // エラーメッセージセット
       setServerErrorMessages(extractErrorMessages(error));
@@ -135,6 +130,7 @@ export const useEditShop = ({base}: useEditShopParams) => {
       setIsShopLoading(true);
       // URLから飲食店ID取得
       const paramShopId = params.shopId;
+      let shopId: number;
       // URLからIDが見つかり、String型の場合
       if(typeof paramShopId === 'string'){
         shopId = Number(paramShopId);    
@@ -149,16 +145,8 @@ export const useEditShop = ({base}: useEditShopParams) => {
       try{
         // 飲食店取得APIリクエスト
         const shop = await getShopById(shopId);
-        // 飲食店フォームセット
-        setInitialShopForm({
-          url: shop.url,
-          name: shop.name,
-          address: shop.address,
-          distance: shop.distance,
-          minutes: shop.minutes,
-          baseId: shop.base.id,
-          location: shop.location
-        });
+        // 飲食店セット
+        setShop(shop);
         
       }catch(error){
         // エラーメッセージコンソール表示
@@ -174,15 +162,23 @@ export const useEditShop = ({base}: useEditShopParams) => {
   // 飲食店取得時実行
   useEffect(() => {
     // 飲食店情報がある場合
-    if(initialShopForm){
+    if(shop){
       // フォームリセット
-      reset(initialShopForm);
+      reset({
+        url: shop.url,
+        name: shop.name,
+        address: shop.address,
+        distance: shop.distance,
+        minutes: shop.minutes,
+        baseId: shop.base.id,
+        location: shop.location
+      });
     }
-  }, [initialShopForm, reset]);
+  }, [shop, reset]);
 
   return {
+    shop,
     isShopLoading,
-    initialShopForm,
     serverErrorMessages,
     handleEdit,
     handleSubmit,

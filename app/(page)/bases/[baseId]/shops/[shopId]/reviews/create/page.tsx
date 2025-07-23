@@ -1,8 +1,7 @@
 "use client"
 
 import { GETTING_ERROR, PAGE_LABELS, PAGE_TITLES } from "@/app/_constants/pageText";
-import { useCreateReview } from "@/app/_hocks/useReview";
-import { base } from "@/app/_test/testData";
+import { useCreateReview } from "@/app/_hocks/useCreateReview";
 import Form from "@/app/_components/form";
 
 import styles from './CreateReviewPage.module.css';
@@ -13,7 +12,7 @@ import ErrorMessage from "@/app/_components/error/errorMessage";
 const CreateReviewPage = () => {
 
   // 口コミ投稿フック
-  const {shop, isShopLoading, handleCreateReview,handleSubmit,serverErrorMessages,register,errors,inputs} = useCreateReview({base: base});
+  const {shop, isShopLoading, handleCreateReview,handleSubmit,serverErrorMessages,register,errors,inputs} = useCreateReview();
 
   // ローディング中の場合
   if(isShopLoading){
