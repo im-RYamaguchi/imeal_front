@@ -71,6 +71,8 @@ export const useShopDetail = ({base}: useShopDetailParams) => {
         shopId = Number(paramShopId);    
       // 拠点が空の場合
       }else{
+        // nullセット
+        setShopWithReviews(null);
         // ローディング終了
         setIsShopWithReviewsLoading(false);
         return;

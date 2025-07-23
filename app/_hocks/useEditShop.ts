@@ -2,19 +2,12 @@ import { GETTING_ERROR, PAGE_LABELS, PAGE_TITLES } from "@/app/_constants/pageTe
 import { ShopFormData } from "@/app/_interfaces/dto/request/ShopFormData";
 import { useParams, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import Form from "@/app/_components/form";
 import { useEffect, useState } from "react";
 import { FormInputData } from "@/app/_interfaces/FormInputData";
 import { BLANK_MESSAGE, POSITIVE_INTEGER, POSITIVE_INTEGER_MESSAGE } from "@/app/_constants/validation";
 import { extractErrorMessages } from "@/app/_utils/errorHandler";
-import Loading from "@/app/_components/common/loading";
-import ErrorMessage from "@/app/_components/error/errorMessage";
 import { PAGE_PATHS } from "@/app/_constants/pagePath";
-import { useBase } from "@/app/_context/baseContext";
-import { ShopData } from "@/app/_interfaces/dto/response/ShopData";
 import { editShop, getShopById } from "@/app/_utils/api/shops";
-
-import styles from "./EditShopPage.module.css"
 import { BaseData } from "../_interfaces/dto/response/BaseData";
 
 const inputs: FormInputData<ShopFormData>[] = [
@@ -51,12 +44,12 @@ const inputs: FormInputData<ShopFormData>[] = [
 
   // 拠点からの距離
   {
-    labelText: PAGE_LABELS.SHOP.DIS,
+    labelText: PAGE_LABELS.SHOP.DISTANCE,
     type: 'number',
-    placeholderText: PAGE_LABELS.SHOP.DIS,
+    placeholderText: PAGE_LABELS.SHOP.DISTANCE,
     name: 'distance',
     validationRules: {
-      required: BLANK_MESSAGE(PAGE_LABELS.SHOP.DIS),
+      required: BLANK_MESSAGE(PAGE_LABELS.SHOP.DISTANCE),
       min: {
         value: POSITIVE_INTEGER,
         message: POSITIVE_INTEGER_MESSAGE
@@ -66,12 +59,12 @@ const inputs: FormInputData<ShopFormData>[] = [
 
   // 拠点から徒歩何分
   {
-    labelText: PAGE_LABELS.SHOP.MIN,
+    labelText: PAGE_LABELS.SHOP.MINUTES,
     type: 'number',
-    placeholderText: PAGE_LABELS.SHOP.MIN,
+    placeholderText: PAGE_LABELS.SHOP.MINUTES,
     name: 'minutes',
     validationRules: {
-      required: BLANK_MESSAGE(PAGE_LABELS.SHOP.MIN),
+      required: BLANK_MESSAGE(PAGE_LABELS.SHOP.MINUTES),
       min: {
         value: POSITIVE_INTEGER,
         message: POSITIVE_INTEGER_MESSAGE
