@@ -16,7 +16,6 @@ export const useEditShop = () => {
   // サーバーからのエラーメッセージリスト状態管理
   const [serverErrorMessages, setServerErrorMessages] = useState<string[]>([]);
   const [shop, setShop] = useState<ShopData | null>(null);
-  const [initialShopForm, setInitialShopForm] = useState<ShopFormData | null>(null);
   // 飲食店をローディング中かどうか
   const [isShopLoading, setIsShopLoading] = useState<boolean>(true);
   // URLパラメータ取得
@@ -53,7 +52,7 @@ export const useEditShop = () => {
       // 飲食店が空の場合
       }else{
         // nullセット
-        setInitialShopForm(null);
+        setShop(null);
         // ローディング終了
         setIsShopLoading(false);
         return;
