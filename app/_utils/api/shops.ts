@@ -3,10 +3,12 @@ import { api } from "./api";
 import { SHOPS_URL } from "./apiUrl";
 import { ShopWithReviewsData } from "@/app/_interfaces/dto/response/ShopWithReviewsData";
 import { ShopFormData } from "@/app/_interfaces/dto/request/ShopFormData";
+import { mockShop, mockShops, mockShopWithReviews } from "@/___tests___/mocks/data";
 
 // 飲食店取得（id）
 export const getShopById = async (shopId: number): Promise<ShopData> => {
   try{
+    return mockShop;
     const response = await api.get<ShopData>(SHOPS_URL.GET_BY_ID(shopId));
     return response.data;
   }catch(error){
@@ -17,6 +19,7 @@ export const getShopById = async (shopId: number): Promise<ShopData> => {
 // 飲食店一覧取得（baseIdでフィルター可能）
 export const getShops = async (baseId?: number): Promise<ShopData[]> => {
   try{
+    return mockShops;
     const response = await api.get<ShopData[]>(SHOPS_URL.GET(baseId));
     return response.data;
   }catch(error){
@@ -27,6 +30,7 @@ export const getShops = async (baseId?: number): Promise<ShopData[]> => {
 // 飲食店とその口コミ一覧取得
 export const getShopWithReviews = async (shopId: number): Promise<ShopWithReviewsData> => {
   try{
+    return mockShopWithReviews;
     const response = await api.get<ShopWithReviewsData>(SHOPS_URL.GET_WITH_REVIEWS(shopId));
     return response.data;
   }catch(error){

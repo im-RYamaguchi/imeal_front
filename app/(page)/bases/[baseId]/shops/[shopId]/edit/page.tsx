@@ -20,7 +20,7 @@ const EditShopPage = () => {
     shop, isShopLoading,
     serverErrorMessages,
     handleEdit, handleSubmit, register, errors, 
-    inputs
+    fields
   } = useEditShop();
 
 
@@ -43,7 +43,7 @@ const EditShopPage = () => {
         handleSubmit={handleSubmit}
         register={register}
         errors={errors}
-        inputs={inputs}
+        fields={fields}
       />
     </div>
   );

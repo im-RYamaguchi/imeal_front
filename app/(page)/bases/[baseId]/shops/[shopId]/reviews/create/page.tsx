@@ -12,7 +12,7 @@ import ErrorMessage from "@/app/_components/error/errorMessage";
 const CreateReviewPage = () => {
 
   // 口コミ投稿フック
-  const {shop, isShopLoading, handleCreateReview,handleSubmit,serverErrorMessages,register,errors,inputs} = useCreateReview();
+  const {shop, isShopLoading, handleCreateReview,handleSubmit, serverErrorMessages, register, errors, fields} = useCreateReview();
 
   // ローディング中の場合
   if(isShopLoading){
@@ -34,7 +34,7 @@ const CreateReviewPage = () => {
         serverErrorMessages={serverErrorMessages}
         register={register}
         errors={errors}
-        inputs={inputs}
+        fields={fields}
       /> 
     </div>
   );

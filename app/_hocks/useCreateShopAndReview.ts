@@ -10,132 +10,7 @@ import { BaseData } from "../_interfaces/dto/response/BaseData";
 import { PAGE_PATHS } from "../_constants/pagePath";
 import { ShopAndReviewFormData } from "../_interfaces/dto/request/ShopAndReviewFormData";
 import { createReview } from "../_utils/api/reviews";
-
-const inputs: FormInputData<ShopAndReviewFormData>[] = [
-  // url
-  {
-    labelText: PAGE_LABELS.SHOP.URL,
-    type: 'text',
-    placeholderText: PAGE_LABELS.SHOP.URL,
-    name: 'url',
-    validationRules: {
-      required: BLANK_MESSAGE(PAGE_LABELS.SHOP.URL)
-    }
-  },
-  // 店名
-  {
-    labelText: PAGE_LABELS.SHOP.NAME,
-    type: 'text',
-    placeholderText: PAGE_LABELS.SHOP.NAME,
-    name: 'name',
-    validationRules: {
-      required: BLANK_MESSAGE(PAGE_LABELS.SHOP.NAME)
-    }
-  },
-  // 住所
-  {
-    labelText: PAGE_LABELS.SHOP.ADDRESS,
-    type: 'text',
-    placeholderText: PAGE_LABELS.SHOP.ADDRESS,
-    name: 'address',
-    validationRules: {
-      required: BLANK_MESSAGE(PAGE_LABELS.SHOP.ADDRESS)
-    }
-  },
-
-  // 拠点からの距離
-  {
-    labelText: PAGE_LABELS.SHOP.DISTANCE,
-    type: 'number',
-    placeholderText: PAGE_LABELS.SHOP.DISTANCE,
-    name: 'distance',
-    validationRules: {
-      required: BLANK_MESSAGE(PAGE_LABELS.SHOP.DISTANCE),
-      min: {
-        value: POSITIVE_INTEGER,
-        message: POSITIVE_INTEGER_MESSAGE
-      }
-    }
-  },
-
-  // 拠点から徒歩何分
-  {
-    labelText: PAGE_LABELS.SHOP.MINUTES,
-    type: 'number',
-    placeholderText: PAGE_LABELS.SHOP.MINUTES,
-    name: 'minutes',
-    validationRules: {
-      required: BLANK_MESSAGE(PAGE_LABELS.SHOP.MINUTES),
-      min: {
-        value: POSITIVE_INTEGER,
-        message: POSITIVE_INTEGER_MESSAGE
-      }
-    }
-  },
-  // 緯度
-  {
-    labelText: PAGE_LABELS.SHOP.LOCATION.LAT,
-    type: 'text',
-    placeholderText: PAGE_LABELS.SHOP.LOCATION.LAT,
-    name: 'location.lat',
-    validationRules: {
-      required: BLANK_MESSAGE(PAGE_LABELS.SHOP.LOCATION.LAT)
-    }
-  },
-
-  // 経度
-  {
-    labelText: PAGE_LABELS.SHOP.LOCATION.LON,
-    type: 'text',
-    placeholderText: PAGE_LABELS.SHOP.LOCATION.LON,
-    name: 'location.lon',
-    validationRules: {
-      required: BLANK_MESSAGE(PAGE_LABELS.SHOP.LOCATION.LON)
-    }
-  },
-  // コメント
-  { 
-    labelText: PAGE_LABELS.REVIEW.COMMENT,
-    type: 'text',
-    placeholderText: PAGE_LABELS.REVIEW.COMMENT,
-    name: 'comment',
-    validationRules: {
-      required: BLANK_MESSAGE(PAGE_LABELS.REVIEW.COMMENT)
-    }
-  },
-  // 金額
-  {
-    labelText: PAGE_LABELS.REVIEW.AMOUNT,
-    type: 'number',
-    placeholderText: PAGE_LABELS.REVIEW.AMOUNT,
-    name: 'amount',
-    validationRules: {
-      required: BLANK_MESSAGE(PAGE_LABELS.REVIEW.AMOUNT),
-      min: {
-        value: POSITIVE_INTEGER,
-        message: POSITIVE_INTEGER_MESSAGE
-      }
-    }
-  },
-  // 評価
-  {
-    labelText: PAGE_LABELS.REVIEW.EVALUATION,
-    type: 'number',
-    placeholderText: EVALUATION_VALIDATION_MESSAGE,
-    name: 'evaluation',
-    validationRules: {
-      required: BLANK_MESSAGE(PAGE_LABELS.REVIEW.EVALUATION),
-      min:{
-        value: EVALUATION_MIN,
-        message: MIN_NUMBER_MESSAGE(PAGE_LABELS.REVIEW.EVALUATION, EVALUATION_MIN)
-      },
-      max:{ 
-        value: EVALUATION_MAX,
-        message: MAX_NUMBER_MESSAGE(PAGE_LABELS.REVIEW.EVALUATION, EVALUATION_MAX)
-      }
-    }
-  },
-];
+import { shopAndReviewFormFields } from "../_constants/formConfigs/shopAndReviewFormFields";
 
 interface useCreateShopAndReviewParams{
   base: BaseData
@@ -146,7 +21,11 @@ export const useCreateShopAndReview = ({base}: useCreateShopAndReviewParams) => 
   const {register, handleSubmit, formState: {errors}} = useForm<ShopAndReviewFormData>();
   // サーバエラーメッセージ状態管理
   const [serverErrorMessages, setServerErrorMessages] = useState<string[]>([]);
+  // ルーターオブジェクト
   const router = useRouter();
+  // フォーム要素取得
+  const fields = shopAndReviewFormFields;
+
   // 飲食店、口コミ投稿処理
   const handleCreateShopAndReview = async (form: ShopAndReviewFormData) => {
     try{
@@ -179,6 +58,6 @@ export const useCreateShopAndReview = ({base}: useCreateShopAndReviewParams) => 
     }
   
   }
-  return {serverErrorMessages, handleCreateShopAndReview, register, handleSubmit, errors, inputs};
+  return {serverErrorMessages, handleCreateShopAndReview, register, handleSubmit, errors, fields};
 
 }
