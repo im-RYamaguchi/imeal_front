@@ -1,6 +1,6 @@
 import { FormInputData } from "@/app/_interfaces/FormInputData";
 import { FieldValues, Path } from "react-hook-form";
-import { BLANK_MESSAGE, EMAIL_MAX_LENGTH, EMAIL_PATTERN, MAX_LENGTH_MESSAGE, MIN_LENGTH_MESSAGE, PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH, PATTERN_MESSAGE } from "../validation";
+import { BLANK_MESSAGE, EMAIL_MAX_LENGTH, EMAIL_PATTERN, MAX_LENGTH_MESSAGE, MIN_LENGTH_MESSAGE, PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH, PATTERN_MESSAGE } from "../../validation";
 
 // メールフィールド作成
 export const createEmailField = <T extends FieldValues>(

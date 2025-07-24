@@ -1,8 +1,5 @@
 "use client";
-import { PAGE_LABELS } from "../_constants/pageText";
-import { BLANK_MESSAGE, EVALUATION_MAX, EVALUATION_MIN, EVALUATION_VALIDATION_MESSAGE, MAX_NUMBER_MESSAGE, MIN_NUMBER_MESSAGE, POSITIVE_INTEGER, POSITIVE_INTEGER_MESSAGE } from "../_constants/validation";
 import { ReviewFormData } from "../_interfaces/dto/request/ReviewFormData";
-import { FormInputData } from "../_interfaces/FormInputData";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
@@ -11,54 +8,7 @@ import { extractErrorMessages } from "../_utils/errorHandler";
 import { getShopById } from "../_utils/api/shops";
 import { ShopData } from "../_interfaces/dto/response/ShopData";
 import { PAGE_PATHS } from "../_constants/pagePath";
-
-const inputs: FormInputData<ReviewFormData>[] = [
-  // コメント
-  {
-    labelText: PAGE_LABELS.REVIEW.COMMENT,
-    type: 'text',
-    placeholderText: PAGE_LABELS.REVIEW.COMMENT,
-    name: 'comment',
-    validationRules: {
-      required: BLANK_MESSAGE(PAGE_LABELS.REVIEW.COMMENT)
-    }
-  },
-
-  //金額
-  {
-    labelText: PAGE_LABELS.REVIEW.AMOUNT,
-    type: 'number',
-    placeholderText: PAGE_LABELS.REVIEW.AMOUNT,
-    name: 'amount',
-    validationRules: {
-      required: BLANK_MESSAGE(PAGE_LABELS.REVIEW.AMOUNT),
-      min: {
-        value: POSITIVE_INTEGER,
-        message: POSITIVE_INTEGER_MESSAGE
-      }
-    }
-  },
-
-  //評価
-  {
-    labelText: PAGE_LABELS.REVIEW.EVALUATION,
-    type: 'number',
-    placeholderText: EVALUATION_VALIDATION_MESSAGE,
-    name: 'evaluation',
-    validationRules: {
-      required: BLANK_MESSAGE(PAGE_LABELS.REVIEW.EVALUATION),
-      min:{ 
-        value: EVALUATION_MIN,
-        message: MIN_NUMBER_MESSAGE(PAGE_LABELS.REVIEW.EVALUATION, EVALUATION_MIN)
-      },
-      max:{ 
-        value: EVALUATION_MAX,
-        message:MAX_NUMBER_MESSAGE(PAGE_LABELS.REVIEW.EVALUATION, EVALUATION_MAX)
-      }
-    }
-  },
-
-];
+import { reviewFormFields } from "../_constants/formConfigs/reviewFormFields";
 
 export const useCreateReview = () => {
   //フォームオブジェクト
@@ -74,6 +24,8 @@ export const useCreateReview = () => {
   const router = useRouter();
   // URLパラメータオブジェクト
   const params = useParams();
+  // フォーム要素取得
+  const fields = reviewFormFields;
 
   //口コミ投稿処理
   const handleCreateReview = async (reviewForm: ReviewFormData) => {
@@ -119,6 +71,6 @@ export const useCreateReview = () => {
   }, [params.shopId]);
   
 
-  return { shop, isShopLoading, handleCreateReview, handleSubmit, serverErrorMessages, register, errors, inputs }
+  return { shop, isShopLoading, handleCreateReview, handleSubmit, serverErrorMessages, register, errors, fields }
 
 }

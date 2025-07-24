@@ -6,7 +6,7 @@ import { extractErrorMessages } from "../_utils/errorHandler";
 import { createUser } from "../_utils/api/users";
 import { SignUpFormData } from "../_interfaces/dto/request/SignUpFormData";
 import { BaseData } from "../_interfaces/dto/response/BaseData";
-import { signUpFormFields } from "../_constants/formConfigs/signUpFormFields";
+import { signUpFormFields } from "../_constants/formConfigs/auth/signUpFormFields";
 
 interface useSignUpParams{
   base: BaseData;

@@ -1,8 +1,8 @@
 import { SignUpFormData } from "@/app/_interfaces/dto/request/SignUpFormData";
 import { FormInputData } from "@/app/_interfaces/FormInputData";
-import { PAGE_LABELS } from "../pageText";
+import { PAGE_LABELS } from "../../pageText"; 
 import { createEmailField, createPasswordField } from "./userField";
-import { BLANK_MESSAGE, MAX_LENGTH_MESSAGE, MIN_LENGTH_MESSAGE, NAME_MAX_LENGTH, PASSWORD_CONFIRMATION_MESSAGE, PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH } from "../validation";
+import { BLANK_MESSAGE, MAX_LENGTH_MESSAGE, MIN_LENGTH_MESSAGE, NAME_MAX_LENGTH, PASSWORD_CONFIRMATION_MESSAGE, PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH } from "../../validation";
 
 // 入力する要素
 export const signUpFormFields: FormInputData<SignUpFormData>[] = [

@@ -6,7 +6,7 @@ import { extractErrorMessages } from "../_utils/errorHandler";
 import { LoginFormData } from "../_interfaces/dto/request/LoginFormData";
 import { BaseData } from "../_interfaces/dto/response/BaseData";
 import { useUser } from "../_context/userContext";
-import { LoginFormFields } from "../_constants/formConfigs/loginFormFields";
+import { LoginFormFields } from "../_constants/formConfigs/auth/loginFormFields";
 
 interface useLoginParams{
   base: BaseData;
