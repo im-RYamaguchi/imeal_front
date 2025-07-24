@@ -4,7 +4,7 @@ import { PAGE_LABELS } from "../../pageText";
 import { createEmailField, createPasswordField } from "./userField";
 import { BLANK_MESSAGE, MAX_LENGTH_MESSAGE, MIN_LENGTH_MESSAGE, NAME_MAX_LENGTH, PASSWORD_CONFIRMATION_MESSAGE, PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH } from "../../validation";
 
-// 入力する要素
+// サインアップフォーム要素
 export const signUpFormFields: FormInputData<SignUpFormData>[] = [
   // 名前
   {

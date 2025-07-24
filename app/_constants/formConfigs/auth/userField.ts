@@ -23,7 +23,7 @@ export const createEmailField = <T extends FieldValues>(
   }
 });
 
-// メールフィールド作成
+// パスワードフィールド作成
 export const createPasswordField = <T extends FieldValues>(
   labelText: string
 ): FormInputData<T> => ({

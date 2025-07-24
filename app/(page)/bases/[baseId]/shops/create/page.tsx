@@ -12,7 +12,7 @@ const CreateShopAndReviewPage = () => {
   // 万が一拠点がnullだった場合
   if(base === null) return;
   // グルメ・口コミ投稿フック
-  const {serverErrorMessages, handleCreateShopAndReview, register, handleSubmit, errors, inputs} = useCreateShopAndReview({base: base});
+  const {serverErrorMessages, handleCreateShopAndReview, register, handleSubmit, errors, fields} = useCreateShopAndReview({base: base});
 
   return(
     <div className={styles.shopAndReviewForm}>
@@ -23,7 +23,7 @@ const CreateShopAndReviewPage = () => {
         serverErrorMessages={serverErrorMessages}
         register={register}
         errors={errors}
-        inputs={inputs}
+        fields={fields}
       />
     </div>
   );

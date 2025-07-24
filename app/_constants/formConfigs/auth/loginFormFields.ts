@@ -3,7 +3,7 @@ import { FormInputData } from "@/app/_interfaces/FormInputData";
 import { createEmailField, createPasswordField } from "./userField";
 import { PAGE_LABELS } from "../../pageText"; 
 
-// 入力する要素
+// ログインフォーム要素
 export const LoginFormFields: FormInputData<LoginFormData>[] = [
   // メールアドレス
   createEmailField(PAGE_LABELS.LOGIN_FORM.EMAIL),
