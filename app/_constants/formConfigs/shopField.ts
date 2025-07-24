@@ -1,6 +1,6 @@
 import { FormInputData } from "@/app/_interfaces/FormInputData";
 import { PAGE_LABELS } from "../pageText";
-import { BLANK_MESSAGE, POSITIVE_INTEGER, POSITIVE_INTEGER_MESSAGE } from "../validation";
+import { BLANK_MESSAGE, DECIMAL_MESSAGE, DECIMAL_PATTERN, LAT_MAX, LAT_MIN, LOCATION_DECIMAL, LON_MAX, LON_MIN, MIN_NUMBER_MESSAGE, NATURAL_PATTERN, NATURAL_PATTERN_MESSAGE, POSITIVE_INTEGER } from "../validation";
 import { FieldValues, Path } from "react-hook-form";
 
 // 飲食店のフォーム要素作成
@@ -44,9 +44,9 @@ export const createShopFields = <T extends FieldValues>(): FormInputData<T>[] =>
     name: 'distance' as Path<T>,
     validationRules: {
       required: BLANK_MESSAGE(PAGE_LABELS.SHOP.DISTANCE),
-      min: {
-        value: POSITIVE_INTEGER,
-        message: POSITIVE_INTEGER_MESSAGE
+      pattern: {
+        value: NATURAL_PATTERN,
+        message: NATURAL_PATTERN_MESSAGE,
       }
     }
   },
@@ -59,9 +59,9 @@ export const createShopFields = <T extends FieldValues>(): FormInputData<T>[] =>
     name: 'minutes' as Path<T>,
     validationRules: {
       required: BLANK_MESSAGE(PAGE_LABELS.SHOP.MINUTES),
-      min: {
-        value: POSITIVE_INTEGER,
-        message: POSITIVE_INTEGER_MESSAGE
+      pattern: {
+        value: NATURAL_PATTERN,
+        message: NATURAL_PATTERN_MESSAGE,
       }
     }
   },
@@ -72,7 +72,19 @@ export const createShopFields = <T extends FieldValues>(): FormInputData<T>[] =>
     placeholderText: PAGE_LABELS.SHOP.LOCATION.LAT,
     name: 'location.lat' as Path<T>,
     validationRules: {
-      required: BLANK_MESSAGE(PAGE_LABELS.SHOP.LOCATION.LAT)
+      required: BLANK_MESSAGE(PAGE_LABELS.SHOP.LOCATION.LAT),
+      min: {
+        value: LAT_MIN,
+        message: MIN_NUMBER_MESSAGE(PAGE_LABELS.SHOP.LOCATION.LAT, LAT_MIN),
+      },
+      max: {
+        value: LAT_MAX,
+        message: MIN_NUMBER_MESSAGE(PAGE_LABELS.SHOP.LOCATION.LAT, LAT_MAX),
+      },
+      pattern: {
+        value: DECIMAL_PATTERN(LOCATION_DECIMAL),
+        message: DECIMAL_MESSAGE(LOCATION_DECIMAL)
+      }
     }
   },
 
@@ -84,6 +96,18 @@ export const createShopFields = <T extends FieldValues>(): FormInputData<T>[] =>
     name: 'location.lon' as Path<T>,
     validationRules: {
       required: BLANK_MESSAGE(PAGE_LABELS.SHOP.LOCATION.LON),
+      min: {
+        value: LON_MIN,
+        message: MIN_NUMBER_MESSAGE(PAGE_LABELS.SHOP.LOCATION.LON, LON_MIN),
+      },
+      max: {
+        value: LON_MAX,
+        message: MIN_NUMBER_MESSAGE(PAGE_LABELS.SHOP.LOCATION.LON, LON_MAX),
+      },
+      pattern: {
+        value: DECIMAL_PATTERN(LOCATION_DECIMAL),
+        message: DECIMAL_MESSAGE(LOCATION_DECIMAL)
+      }
     }
   }
 ]);
