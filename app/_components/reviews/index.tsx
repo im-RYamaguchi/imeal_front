@@ -16,6 +16,10 @@ const Reviews = ({reviews, direction, isAddingShop, handleDelete}: ReviewsProps)
   if(direction === 'column'){
     classNames.push(styles.column);
   }
+
+  if(direction === 'row'){
+    classNames.push(styles.row);
+  }
   return(
     <div className={classNames.join(' ')}>
       {reviews.map((review) => (

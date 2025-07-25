@@ -23,7 +23,7 @@ const Review = ({review, isAddingShop, handleDelete}: ReviewProps) => {
 
   return(
     <div className={styles.review}>
-      <img src={review.img_path} alt="口コミ" style={{width: '25vw'}}/>
+      <img src={review.img_path} alt="口コミ" />
       {isAddingShop && 
         <LinkButton text={`${PAGE_LABELS.SHOP.NAME}：${review.shop.name}`} href={PAGE_PATHS.SHOP_DETAIL(review.shop.base.id, review.shop.id)} styleType="shopName" />
       }

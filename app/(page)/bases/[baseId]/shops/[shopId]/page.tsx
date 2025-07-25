@@ -42,8 +42,9 @@ const ShopDetailPage = () => {
 
       <h2>{PAGE_SUB_TITLES.SHOP_DETAIL.REVIEWS}</h2>
 
-      <LinkButton text={PAGE_TITLES.CREATE_REVIEW} href={PAGE_PATHS.CREATE_REVIEW(shopWithReviews.base.id, shopWithReviews.id)} />
-      <Reviews reviews={shopWithReviews.reviews} handleDelete={handleReviewDelete} />
+      <LinkButton text={PAGE_TITLES.CREATE_REVIEW} href={PAGE_PATHS.CREATE_REVIEW(shopWithReviews.base.id,shopWithReviews.id)} />
+      <Reviews direction="row" reviews={shopWithReviews.reviews}  handleDelete={handleReviewDelete} />
+
     </>
   );
 };
