@@ -4,7 +4,7 @@
   justify-content: space-around;
 }
 .reviewlistcontainer{
-  height: calc(100vh - 200px);
+  height: calc(100vh - 15rem);
   overflow-y: auto;
   
 }
