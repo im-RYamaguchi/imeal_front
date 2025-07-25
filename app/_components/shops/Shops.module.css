@@ -1,17 +1,20 @@
 /* 飲食店に対応するCSS */
 
-.shops{
+.shops {
   display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.shop{
-  display: flex;
-  flex-direction: column;
+.shop {
   margin: 0 1rem;
   padding: 1rem;
   background-color: burlywood;
+  
 }
-
-.name{
+.shopList{
+  width: calc((100% - 2rem) / 3);
+}
+.name {
   font-size: 2rem;
 }

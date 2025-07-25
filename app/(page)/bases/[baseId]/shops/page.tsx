@@ -5,6 +5,8 @@ import { useBase } from "@/app/_context/baseContext";
 import Loading from "@/app/_components/common/loading";
 import ErrorMessage from "@/app/_components/error/errorMessage";
 import { useShops } from "@/app/_hocks/useShops";
+import { styleText } from "util";
+import styles from "./ShopsPage.module.css";
 
 // グルメ一覧ページ
 const ShopsPage = () => {
@@ -28,7 +30,7 @@ const ShopsPage = () => {
   return(
     <>
       <h1>{PAGE_TITLES.SHOPS}</h1>
-      <Shops shops={shops} handleDelete={handleDelete} />
+        <Shops shops={shops} handleDelete={handleDelete} />
     </>
   );
 };

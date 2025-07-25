@@ -37,7 +37,6 @@ const ShopDetailPage = () => {
       
       <div className={styles.shopInfo}>
         <ShopMap shops={[shopWithReviews]} base={shopWithReviews.base}/>
-
         <Shop shop={shopWithReviews} handleDelete={handleShopDelete}/>
       </div>
 
