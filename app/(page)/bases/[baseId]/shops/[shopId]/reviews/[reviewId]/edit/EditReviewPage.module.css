@@ -1,1 +1,6 @@
 /* 口コミ編集ページに適応するCSS */
+.reviewForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
