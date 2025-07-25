@@ -5,6 +5,8 @@
 
 .column{
   flex-direction: column;
+  height: calc(100vh - 15rem);
+  overflow-y: auto;
 }
 
 .review{
