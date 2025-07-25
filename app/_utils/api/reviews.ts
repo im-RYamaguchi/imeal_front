@@ -6,6 +6,8 @@ import { mockReviews } from "@/___tests___/mocks/data";
 import { request } from "http";
 import { responseCookiesToRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 import { error } from "console";
+import { reviewFormFields } from "@/app/_constants/formConfigs/reviewFormFields";
+import { promises } from "dns";
 
 // 口コミ取得APIリクエスト
 export const getReviews = async (baseId?: number, limit?: number, sort?: string): Promise<ReviewData[]> => {
@@ -16,6 +18,17 @@ export const getReviews = async (baseId?: number, limit?: number, sort?: string)
   } catch (error) {
     throw error;
   }
+};
+
+//口コミID取得APIリクエスト
+export const findReviewById = async(reviewId: number):Promise<ReviewData> =>{
+  try{
+    const response = await api.get<ReviewData>(`/reviews/${reviewId}`);
+    return response.data;
+  } catch(error) {
+    throw error;
+  }
+
 };
 
 // 口コミ削除APIリクエスト
