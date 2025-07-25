@@ -11,24 +11,24 @@ import { useTop } from "@/app/_hocks/useTop";
 // トップページ
 const TopPage = () => {
   // 拠点取得
-  const {base} = useBase();
+  const { base } = useBase();
   // 万が一拠点がnullだった場合
-  if(base === null) return;
+  if (base === null) return;
 
   // トップページフック
-  const {shops, reviews, isLoading, handleDelete} = useTop({base: base});
+  const { shops, reviews, isLoading, handleDelete } = useTop({ base: base });
 
   // ローディング中の場合
-  if(isLoading){
+  if (isLoading) {
     return <Loading />;
   }
 
   // 飲食店または口コミがnullの場合
-  if(shops === null || reviews === null){
+  if (shops === null || reviews === null) {
     return <ErrorMessage errorMessage={GETTING_ERROR(`${PAGE_LABELS.SHOP.VARIABLE_NAME}または${PAGE_LABELS.REVIEW.VARIABLE_NAME}`)} />
   }
 
-  return(
+  return (
     <>
       <h1>{PAGE_TITLES.TOP}</h1>
 
@@ -40,7 +40,9 @@ const TopPage = () => {
 
         <div>
           <h2>{PAGE_SUB_TITLES.TOP.RECENT_REVIEWS}</h2>
-          <Reviews reviews={reviews} direction={'column'} isAddingShop={true} handleDelete={handleDelete} />
+          <div className={styles.reviewlistcontainer}>
+            <Reviews reviews={reviews} direction={'column'} isAddingShop={true} handleDelete={handleDelete} />
+          </div>
         </div>
       </div>
     </>
