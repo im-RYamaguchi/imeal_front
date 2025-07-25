@@ -13,7 +13,9 @@ const Shops = ({shops, handleDelete}: ShopsProps) => {
   return(
   <div className={styles.shops}>
     {shops.map((shop) => (
+      <div className={styles.shopList}>
       <Shop key={shop.id} shop={shop} handleDelete={handleDelete}/>
+      </div>
     ))}
   </div>
   );

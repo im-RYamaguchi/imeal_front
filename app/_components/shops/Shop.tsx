@@ -27,7 +27,6 @@ const Shop = ({shop, handleDelete}: ShopProps) => {
       <p>{PAGE_LABELS.SHOP.MINUTES_TYPE(shop.minutes)}</p>
       <LinkButton text={HANDLE_NAME.EDIT} href={PAGE_PATHS.EDIT_SHOP(shop.base.id, shop.id)} />
       <ClickButton text={HANDLE_NAME.DELETE} onClick={onClick} />
-      
     </div>
   );
 };

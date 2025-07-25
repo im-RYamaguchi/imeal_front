@@ -85,7 +85,7 @@ export const mockShop3: ShopData = {
 
 // テストショップリストデータ
 export const mockShops: ShopData[] = [
-  mockShop, mockShop2
+  mockShop, mockShop2, mockShop, mockShop2, mockShop, mockShop2, mockShop, mockShop2, mockShop, 
 ]
 export const mockShops2: ShopData[] = [
   mockShop3
