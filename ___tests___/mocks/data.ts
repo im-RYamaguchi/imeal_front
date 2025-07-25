@@ -115,7 +115,7 @@ export const mockReview2: ReviewData = {
 
 // テストレビューリストデータ
 export const mockReviews: ReviewData[] = [
-  mockReview, mockReview2
+  mockReview, mockReview2,mockReview, mockReview2,mockReview, mockReview2
 ];
 
 //  テストレビュー付きショップデータ

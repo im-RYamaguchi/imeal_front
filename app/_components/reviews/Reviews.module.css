@@ -9,12 +9,16 @@
   overflow-y: auto;
 }
 
+.row{
+  flex-wrap: wrap;
+}
 .review{
   display: flex;
   flex-direction: column;
   margin: 1rem;
   padding: 1rem;
   background-color: burlywood;
+  width: calc((100vw - 12rem)/ 4);
 }
 
 .shopName{
