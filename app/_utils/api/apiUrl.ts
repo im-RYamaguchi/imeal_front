@@ -1,3 +1,5 @@
+import { PAGE_SUB_TITLES } from "@/app/_constants/pageText";
+
 export const BASE_URL = 'http://localhost:8080/api'
 
 // APIパス
@@ -40,6 +42,8 @@ export const REVIEWS_URL = {
   GET: (baseId?: number, limit?: number, sort?: string) => `/reviews?baseId={${baseId}}&limit={${limit}}&sort={${sort}}`,
   // 作成
   CREATE: '/reviews',
+  //編集
+  PUT:(reviewId: number) => `/reviews/${reviewId}`,
   // 削除
   DELETE: (reviewId: number) => `/reviews/${reviewId}`
 };

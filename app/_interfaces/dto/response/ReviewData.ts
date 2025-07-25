@@ -2,6 +2,7 @@ import { ShopData } from "./ShopData";
 import { UserData } from "./UserData";
 
 export interface ReviewData{
+  base: any;
   // ID
   id: number;
   // 写真パス
