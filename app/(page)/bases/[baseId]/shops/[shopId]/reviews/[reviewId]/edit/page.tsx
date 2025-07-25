@@ -11,22 +11,22 @@ import Loading from "@/app/_components/common/loading";
 const EditReviewPage = () => {
 
   //口コミ編集フック
-  const { shop,isShopLoading,handleEditReview, handleSubmit, serverErrorMessages, register, errors, fields } = useEditReview();
+  const { review,isReviewLoading,handleEditReview, handleSubmit, serverErrorMessages, register, errors, fields } = useEditReview();
 
   //ローディング中の場合
-  if(isShopLoading){
+  if(isReviewLoading){
     return<Loading/>
   }
 
-  // 飲食店が空の場合
-  if(shop === null){
-    return <ErrorMessage errorMessage={GETTING_ERROR(PAGE_LABELS.SHOP.VARIABLE_NAME)} />
+  if (!review) {
+    return <ErrorMessage errorMessage={GETTING_ERROR(PAGE_LABELS.REVIEW.VARIABLE_NAME)} />;
   }
+
   
   return (
     <div className={styles.reviewForm}>
       <h1>{PAGE_TITLES.EDIT_REVIEW}</h1>
-      <h2>{PAGE_LABELS.SHOP.NAME}：{shop.name}</h2>
+       <h2>{PAGE_LABELS.SHOP.NAME}：{review.shop.name}</h2> 
       <Form
         onSubmit={handleEditReview}
         handleSubmit={handleSubmit}
