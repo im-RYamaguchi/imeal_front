@@ -39,7 +39,7 @@ export const SHOPS_URL = {
 //口コミ
 export const REVIEWS_URL = {
   // 取得
-  GET: (baseId?: number, limit?: number, sort?: string) => `/reviews?baseId={${baseId}}&limit={${limit}}&sort={${sort}}`,
+  GET: (baseId?: number, limit?: number, sort?: string) => `/reviews?baseId=${baseId}&limit=${limit}&sort=${sort}`,
   // 作成
   CREATE: '/reviews',
   //編集
